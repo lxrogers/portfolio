@@ -1,3 +1,8 @@
+	//PARTICLE PARAMS
+
+
+
+	//ENVIRONMENT PARAMS
 	var canvas = document.getElementById('projector');
 	var VELOCITY = 1.5;
 	
@@ -5,9 +10,9 @@
 		x : 0,
 		y : 0
 	};
-	var hearttimer = false;
 	var particles = [];
 	var colors = [ "#D96363", "#798EE0", "#666" ];
+	var backgroundColor = '#000';
 	var context;
 	var count = 0;
 	var secret = false;
@@ -39,59 +44,63 @@
 		window.addEventListener('resize', ResizeCanvas, false);
 		setInterval(TimeUpdate, 20);
 		ResizeCanvas();
-
-
 	}
 	
 	function TimeUpdate(e) {
-
-		context.clearRect(0, 0, canvas.width, canvas.height);
-		context.fillStyle = '#FFF'; // set canvas background color
-		context.fillRect(0, 0, canvas.width, canvas.height); // now fill the canvas
-
+		clearCanvas();
+		
 		var len = particles.length;
-		var particle;
-
 		for ( var i = 0; i < len; i++) {
 			particle = particles[i];
-			flicker(particle);
 
-			if (particle.accel) {
-				particle.x *= .9;
-				particle.y *= .9;
-			}
-			if (!particle.lock) {
-				border(particle);
-				particle.originX += particle.vx;
-				particle.originY += particle.vy;
-			}
-			if (Math.random() > .01) {
-				drawPart(particle);
-			}
+			flickerPart(particle);
+			accelPart(particle);
+			movePart(particle);
+			drawPart(particle);
 		}
-		count++;
-		if (count > 100) {
-			release();
-			count=0;
-		}
-	}
-	
-	function drawPart(particle) {
-		context.fillStyle = particle.color;
-		context.beginPath();
-		context.arc(particle.originX + particle.x, particle.originY
-				+ particle.y, particle.currentSize, 0, Math.PI * 2, true);
-		context.closePath();
-		context.fill();
+
+		updateCounter();
 	}
 
-	function flicker(particle) {
+	//clear canvas, replace with background color variable
+	function clearCanvas()  {
+		context.clearRect(0, 0, canvas.width, canvas.height);
+		context.fillStyle = backgroundColor; // set canvas background color
+		context.fillRect(0, 0, canvas.width, canvas.height); // now fill the canvas
+	}
+
+	// make the particle pop back up to a random size
+	function flickerPart(particle) {
 		if (particle.currentSize < 3) {
 			particle.currentSize = Math.random() * 25;
 		} else {
 			particle.currentSize *= .975;
 		}
 	}
+
+	function accelPart(particle) {
+		particle.x *= .9;
+		particle.y *= .9;
+	}
+	
+	function movePart(particle) {
+		if (!particle.lock) {
+			border(particle);
+			particle.originX += particle.vx;
+			particle.originY += particle.vy;
+		}
+	}
+	function drawPart(particle) {
+		if (Math.random() > .01) {
+			context.fillStyle = particle.color;
+			context.beginPath();
+			context.arc(particle.originX + particle.x, particle.originY
+					+ particle.y, particle.currentSize, 0, Math.PI * 2, true);
+			context.closePath();
+			context.fill();
+		}
+	}
+
 	function border(particle) {
 		if (particle.originX > canvas.width) {
 			particle.originX = 0;
@@ -111,6 +120,15 @@
 		} else {
 		}
 	}
+
+	function updateCounter() {
+		count++;
+		if (count > 100) {
+			release();
+			count = 0;
+		}
+	}
+
 	function MouseMove(e) {
 		mouse.x = e.layerX;
 		mouse.y = e.layerY;
@@ -120,7 +138,6 @@
 		Scatter();
 	}
 	function MouseUp(e) {
-		hearttimer = false;
 		release();
 	}
 	function ResizeCanvas(e) {
@@ -128,11 +145,6 @@
 		canvas.height = canvas.parentNode.offsetHeight;
 	}
 
-	function DistanceBetween(p1, p2) {
-		var dx = p2.x - p1.x;
-		var dy = p2.y - p1.y;
-		return Math.sqrt(dx * dx + dy * dy);
-	}
 	function release() {
 		var len = particles.length;
 		var particle;
@@ -159,8 +171,10 @@
 			particle.accel = true;
 			particle.lock = l;
 		}
-		count=0;
+		count = 0;
 	}
+
+	//SHAPE FUNCTIONS
 	// BLEH X_X
 	function Scatter() {
 		var rcolors = [];
@@ -169,10 +183,11 @@
 		}
 		shapeAll(0,0, ScatterXFunc, ScatterYFunc, 1, colors, false);
 	}
+
 	function ScatterXFunc(t) {return Math.random() * canvas.width;}
 	function ScatterYFunc(t) {return Math.random() * canvas.height;}
 	//HEARTS <3
-	function Heart(x, y) {shapeAll(x, y, HeartXFunc, HeartYFunc, canvas.height/25,colors, true);}
+	function Heart(x, y) {shapeAll(x, y, HeartXFunc, HeartYFunc, canvas.height/27,colors, true);}
 	function HeartXFunc(t) {return 16 * Math.sin(t) * Math.sin(t) * Math.sin(t);}
 	function HeartYFunc(t) {return -((13 * Math.cos(t)) - (5 * Math.cos(2 * t))	- (2 * Math.cos(3 * t)) - Math.cos(4 * t));}
 	
