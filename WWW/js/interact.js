@@ -8,9 +8,10 @@ function slide() {
 	var zoomTime = 1000;
 	var delayTime = 2000;
 	var endOpacity = 1;
+	var canvasOpacity = 1;
 	//alert("slide");
 	$("#canvas").delay(500).animate(
-		{opacity:.7}, 2500);
+		{opacity:canvasOpacity}, 2500);
 	
 	designer.delay(delayTime).animate(
 		{opacity: endOpacity,'margin-top': 0},
@@ -47,17 +48,19 @@ designer.mouseenter(function(){
 		shrink
 	);
 
-	Heart(canvas.width*.15, canvas.height/2 - 120);
+	Heart(canvas.width/2, canvas.height * 2/5);
 });
 
 engineer.mouseenter(function() {
-	Circle(canvas.width*.15, canvas.height*.35);
+	
 	$(this).stop().animate(
 		{'font-size': '5.3em'},
 		100,
 		"easeOutExpo",
 		shrink
 	);
+
+	Circle(canvas.width/2, canvas.height/2);
 });
 
 innovator.mouseenter(function() {

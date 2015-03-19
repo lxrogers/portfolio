@@ -8,6 +8,7 @@ body {
 	margin: 0;
 	color: #FFF;
 	font-family: 'Raleway', sans-serif;
+
 }
 
 h1,h2,h3,h4,h5,h6
@@ -28,6 +29,7 @@ h1 {
   height: 100%;
   opacity:0;
 }
+
 .iam {
 	margin-left: 15%;
 	margin-right: auto;
@@ -35,6 +37,7 @@ h1 {
 	font-weight: 800;
 	font-size: 5em;
 	width: 20%;
+	background: url(../img/diagonals.png) repeat rgba(0,0,0,.5);
 }
 
 .slideup {
@@ -63,7 +66,7 @@ h1 {
 	top:20%;
 	height: 100%;
 	width: 100%;
-	color: #000;
+	color: #FFF;
 }
 #name {
 	margin: 5px;
