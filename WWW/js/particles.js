@@ -1,24 +1,28 @@
 	//PARTICLE PARAMS
-	var NUM_PARTICLES = 35;
+	var NUM_PARTICLES = 55;
+	var curr_particles = NUM_PARTICLES;
+	var PARTICLE_TO_SCREEN_RATIO = 20;
 	var VELOCITY = 1.5;
 	var colors = [ "#F27979", "#FFD6D6", "#B31717", "#E6FFFF", "#DA95ED", "#95EDC9"];
 	var heartColors = [ "#F27979", "#FFD6D6", "#B31717" ];
 	var circleColors = [ "#E6FFFF", "#DA95ED", "#95EDC9" ]
-	var SEED_SIZE = 60;
+	var SEED_SIZE = 50;
 	var FLICKER_RATE = .02;
 
 	//ENVIRONMENT PARAMS
 	var canvas = document.getElementById('projector');
 	var backgroundColor = '#000';
 	var count = 0;
-	var half_min_dimension = canvas.height / 2;
+	var half_min_dimension;
+	var CANVAS_RATIO;
+	var CANVAS_HEIGHT = 500;
 	
 	var mouse = {
 		x : 0,
 		y : 0
 	};
 
-	var particles = [];
+	var particles;
 	var context;
 	
 	//EVERYTHING BEGINS HERE
@@ -33,11 +37,14 @@
 		window.addEventListener('mousedown', MouseDown, false);
 		window.addEventListener('mouseup', MouseUp, false);
 		window.addEventListener('resize', ResizeCanvas, false);
-		setInterval(TimeUpdate, 20);
 		ResizeCanvas();
+		
+		setInterval(TimeUpdate, 27);
+		
 	}
 
 	function initParticles() {
+		particles = [];
 		for ( var i = 0; i < NUM_PARTICLES; i++) {
 			particles.push({
 				x : 0,
@@ -55,10 +62,9 @@
 	}
 	
 	function TimeUpdate(e) {
-		clearCanvas();
-		
-		var len = NUM_PARTICLES;
-		for ( var i = 0; i < len; i++) {
+		eraseParticles();
+
+		for ( var i = 0; i < curr_particles; i++) {
 			particle = particles[i];
 
 			popPart(particle);
@@ -70,7 +76,8 @@
 		updateCounter();
 	}
 
-	//clear canvas, replace with background color variable
+	//clear canvas, replace with background color variable.
+	//** EXPENSIVE, DO NOT LOOP***
 	function clearCanvas()  {
 		context.clearRect(0, 0, canvas.width, canvas.height);
 		context.fillStyle = backgroundColor; // set canvas background color
@@ -98,6 +105,7 @@
 			particle.originY += particle.vy * 1.5 * (1 - (particle.currentSize / SEED_SIZE ));
 		}
 	}
+	
 	function drawPart(particle) {
 		if (Math.random() > FLICKER_RATE) {
 			context.fillStyle = particle.color;
@@ -106,6 +114,20 @@
 					+ particle.y, particle.currentSize, 0, Math.PI * 2, true);
 			context.closePath();
 			context.fill();
+		}
+	}
+
+	//**EFFICIENT**
+	function eraseParticles() {
+		context.fillStyle = backgroundColor;
+		var particle;
+		for (var i = 0; i < curr_particles; i++) {
+			particle = particles[i];
+			context.fillRect(
+				particle.originX + particle.x - particle.currentSize,
+				particle.originY + particle.y - particle.currentSize, 
+				particle.currentSize * 2, 
+				particle.currentSize * 2);
 		}
 	}
 
@@ -149,10 +171,18 @@
 		release();
 	}
 	function ResizeCanvas(e) {
-		canvas.width = canvas.parentNode.offsetWidth;
-		canvas.height = canvas.parentNode.offsetHeight;
+		CANVAS_RATIO = canvas.parentNode.offsetWidth / canvas.parentNode.offsetHeight;
+		canvas.width = CANVAS_HEIGHT * CANVAS_RATIO;
+		canvas.style.width = window.innerWidth + 'px';
+		canvas.height = CANVAS_HEIGHT;
+		canvas.style.height = window.innerHeight + 'px';
 
 		half_min_dimension = Math.min(canvas.height / 2, canvas.width / 2);
+
+		clearCanvas();
+		curr_particles = Math.min(NUM_PARTICLES, 
+			NUM_PARTICLES * canvas.parentNode.offsetWidth / (SEED_SIZE * PARTICLE_TO_SCREEN_RATIO)
+		);
 	}
 
 	function release() {
