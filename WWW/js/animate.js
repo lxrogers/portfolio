@@ -44,7 +44,8 @@ function animateIntro() {
 function addListeners() {
 
 	$('#designer-over').mouseover(function() {
-		designer.stop().animate(
+		$('.iam').stop();
+		designer.animate(
 			{'font-size': '4.5em'},
 			100,
 			"easeOutExpo",
@@ -55,7 +56,8 @@ function addListeners() {
 	});
 	
 	$('#innovator-over').mouseover(function() {
-		innovator.stop().animate(
+		$('.iam').stop();
+		innovator.animate(
 			{'font-size': '4.5em'},
 			100,
 			"easeOutExpo",
@@ -65,7 +67,8 @@ function addListeners() {
 	});
 
 	$('#engineer-over').mouseover(function() {
-		engineer.stop().animate(
+		$('.iam').stop();
+		engineer.animate(
 			{'font-size': '4.5em'},
 			100,
 			"easeOutExpo",

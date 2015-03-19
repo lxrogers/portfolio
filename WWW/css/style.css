@@ -62,25 +62,25 @@ html, body {
 	width: 100%;
 	z-index: 99;
 }
+#designer {
+	color: #F96474;
+}
 
-#designer-over {
-	height: 100px;
+#engineer {
+	color: #95EDC9;
 }
-#innovator-over {
-	height: 100px;
-}
-#engineer-over {
+#designer-over, #innovator-over, #engineer-over {
 	height: 100px;
 }
 
 #gradient {
 	background: url(../img/gradient-dark-stripe-hz.png) repeat-x;
-	opacity: 1;
+	opacity: .65;
 	background-size: 100% 85%;
 	position: absolute;
   	display: block;
   	width: 100%;
-  	height: 100%;
+  	height: 250%;
 }
 
 #name {
