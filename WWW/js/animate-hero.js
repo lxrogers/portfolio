@@ -7,6 +7,7 @@ var innovator = $("#innovator");
 //----------------------------------------
 function animateIntro() {
 	var delayTime = 1200;
+	var initTime = 750;
 	
 	setTimeout(function() {
 		designer.animate(
@@ -15,7 +16,7 @@ function animateIntro() {
 			"easeOutCubic"
 		);
 		Heart(canvas.width/2, canvas.height * 2/5);
-	}, 1000 + delayTime);
+	}, initTime + delayTime);
 
 	setTimeout(function() {
 		engineer.animate(
@@ -24,7 +25,7 @@ function animateIntro() {
 			"easeOutCubic"
 		);
 		Circle(canvas.width/2, canvas.height/2);
-	}, 1000 + delayTime * 2);
+	}, initTime + delayTime * 2);
 	
 	setTimeout(function() {
 		innovator.animate(
@@ -36,7 +37,7 @@ function animateIntro() {
 
 		addListeners();
 
-	}, 1000 + delayTime * 3);
+	}, initTime + delayTime * 3);
 }
 
 //Mouse Over Animation Listeners

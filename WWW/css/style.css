@@ -2,9 +2,15 @@ html, body {
 	height: 100%;
 }
 
+a {
+	text-decoration: none;
+	color: inherit;
+}
 
-
-
+a:hover {
+	text-decoration: none;
+	color: inherit;
+}
 
 /* Sections
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -52,16 +58,17 @@ html, body {
 
 .hero .row.headline {
 	position: absolute;
-	top: 40%;
+	top: 35%;
 	width: 100%;
 }
 
 .hero .row.headline.over {
 	position: absolute;
-	top: 40%;
+	top: 35%;
 	width: 100%;
 	z-index: 99;
 }
+
 #designer {
 	color: #F96474;
 }
@@ -75,20 +82,24 @@ html, body {
 
 #gradient {
 	background: url(../img/gradient-dark-stripe-hz.png) repeat-x;
-	opacity: .65;
+	opacity: .5;
 	background-size: 100% 85%;
 	position: absolute;
-  	display: block;
-  	width: 100%;
-  	height: 250%;
+	display: block;
+	width: 100%;
+	height: 250%;
+}
+#nav {
+	font-weight: 400;
+	color: white;
+}
+
+.nav-item {
+	transition: color .7s;
 }
 
 #name {
-	font-weight: 400;
-	color: white;
-	position: absolute;
-	left: 5%;
-	top: 5%;
+	float: left;
 }
 
 .iam {
