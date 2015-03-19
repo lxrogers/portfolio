@@ -95,7 +95,7 @@ a:hover {
 }
 
 .nav-item {
-	transition: color .7s;
+	transition: color .5s;
 }
 
 #name {
