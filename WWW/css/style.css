@@ -99,7 +99,8 @@ a:hover {
 }
 
 #name {
-	float: left;
+	color: white;
+	margin-bottom: 20px;
 }
 
 .iam {
