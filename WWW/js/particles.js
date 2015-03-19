@@ -187,11 +187,7 @@
 	//SHAPE FUNCTIONS
 	// BLEH X_X
 	function Scatter() {
-		var rcolors = [];
-		for (var i = 0; i < 4; i++) {
-			rcolors.push("#"+((1<<24)*Math.random()|0).toString(16));
-		}
-		shapeAll(canvas.width / 2, canvas.height / 2, ScatterXFunc, ScatterYFunc, 1, colors, false);
+		shapeAll(0,0, ScatterXFunc, ScatterYFunc, 1, colors, false);
 	}
 
 	function ScatterXFunc(t) {return Math.random() * canvas.width;}
@@ -202,6 +198,6 @@
 	function HeartYFunc(t) {return -((13 * Math.cos(t)) - (5 * Math.cos(2 * t))	- (2 * Math.cos(3 * t)) - Math.cos(4 * t));}
 	
 	//CIRCLES :)
-	function Circle(x, y) {	shapeAll(x, y, CircleXFunc, CircleYFunc, half_min_dimension,	circleColors, true);}
+	function Circle(x, y) {	shapeAll(x, y, CircleXFunc, CircleYFunc, half_min_dimension * .75,	circleColors, true);}
 	function CircleXFunc(t) {return Math.cos(t);}
 	function CircleYFunc(t) {return Math.sin(t);}

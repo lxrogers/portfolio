@@ -37,24 +37,34 @@
 		<div id="canvas" >
 			<canvas id="projector" width="100%" height="100%" >Your browser does not support the Canvas element.</canvas>
 			<script src="js/particles.js"></script>
+			<div class="filter"></div>
 		</div>
-		<div class="spacer"></div>
+		<div id="name">	Lawrence X. Rogers	</div>
 
 		<div class="container">
-			 <div class="row">
-		        <div class="one-third column value">
-					<h1 class="iam">Designer</h1>
+			<div class="row headline">
+				
+				<div class="one-third column">
+					<h1 id="designer" class="iam">Designer</h1>
 				</div>
-				<div class="one-third column value">
-					<h1 class="iam">Innovator</h1>
+				<div class="one-third column">
+					<h1 id="innovator" class="iam">Innovator</h1>
 				</div>
-				<div class="one-third column value">
-					<h1 class="iam">Engineer</h1>
+				<div class="one-third column">
+					<h1 id="engineer" class="iam">Engineer</h1>
 				</div>
-		     </div>
-			
+
+				<span id="gradient"><span>
+			</div>
+			<div class="row headline over">
+				<div id="designer-over" class="one-third column"></div>
+				<div id="innovator-over" class="one-third column"></div>
+				<div id="engineer-over" class="one-third column"></div>
+			</div>
 		</div>
 	</div>
+
+	<script src="js/animate.js"></script>
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->

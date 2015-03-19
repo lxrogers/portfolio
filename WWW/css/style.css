@@ -1,14 +1,7 @@
 html, body {
 	height: 100%;
 }
-#canvas {
-	position:absolute;
-	top: 0;
-	left: 0;
-  	width: 100%; 
-  	height: 100%;
-  	opacity: 1;
-}
+
 
 
 
@@ -25,23 +18,85 @@ html, body {
   margin-bottom: 1.2rem;
 }
 
+/* Shared
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.filter {
+	position:absolute;
+	top: 0;
+	left: 0;
+  	width: 100%; 
+  	height: 100%;
+  	opacity: .7;
+	background: url(../img/diagonals.png) repeat rgba(0,0,0,.5);
+}
 
 /* Hero
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .hero {
 	height: 100%;
 }
+
+#canvas {
+	position:absolute;
+	top: 0;
+	left: 0;
+  	width: 100%; 
+  	height: 100%;
+  	opacity: 1;
+}
+
 .hero .container {
 	height: 100%;
 }
-.hero .row {
+
+.hero .row.headline {
 	position: absolute;
 	top: 40%;
 	width: 100%;
 }
 
+.hero .row.headline.over {
+	position: absolute;
+	top: 40%;
+	width: 100%;
+	z-index: 99;
+}
+
+#designer-over {
+	height: 100px;
+}
+#innovator-over {
+	height: 100px;
+}
+#engineer-over {
+	height: 100px;
+}
+
+#gradient {
+	background: url(../img/gradient-dark-stripe-hz.png) repeat-x;
+	opacity: 1;
+	background-size: 100% 85%;
+	position: absolute;
+  	display: block;
+  	width: 100%;
+  	height: 100%;
+}
+
+#name {
+	font-weight: 400;
+	color: white;
+	position: absolute;
+	left: 5%;
+	top: 5%;
+}
+
 .iam {
 	font-weight: 800;
-	font-size: 4em;
+	font-size: 4.2em;
 	color: white;
+	opacity: 0;
+	z-index: 1;
+	
+
 }
