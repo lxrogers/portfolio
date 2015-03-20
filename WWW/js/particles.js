@@ -2,11 +2,11 @@
 	var NUM_PARTICLES = 55;
 	var curr_particles = NUM_PARTICLES;
 	var PARTICLE_TO_SCREEN_RATIO = 20;
-	var VELOCITY = 1.5;
+	var VELOCITY = 1.3;
 	var colors = [ "#F27979", "#FFD6D6", "#B31717", "#E6FFFF", "#DA95ED", "#95EDC9"];
 	var heartColors = [ "#F27979", "#FFD6D6", "#B31717" ];
 	var circleColors = [ "#E6FFFF", "#DA95ED", "#95EDC9" ]
-	var SEED_SIZE = 50;
+	var SEED_SIZE = 35;
 	var FLICKER_RATE = .02;
 
 	//ENVIRONMENT PARAMS
