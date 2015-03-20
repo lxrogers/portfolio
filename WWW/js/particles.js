@@ -124,10 +124,10 @@
 		for (var i = 0; i < curr_particles; i++) {
 			particle = particles[i];
 			context.fillRect(
-				particle.originX + particle.x - particle.currentSize,
-				particle.originY + particle.y - particle.currentSize, 
-				particle.currentSize * 2, 
-				particle.currentSize * 2);
+				particle.originX + particle.x - particle.currentSize * 1.1,
+				particle.originY + particle.y - particle.currentSize * 1.1, 
+				particle.currentSize * 2.2, 
+				particle.currentSize * 2.2);
 		}
 	}
 
