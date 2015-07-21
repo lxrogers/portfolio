@@ -44,10 +44,39 @@
 		window.addEventListener('mousedown', MouseDown, false);
 		window.addEventListener('mouseup', MouseUp, false);
 		window.addEventListener('resize', ResizeCanvas, false);
+
+		window.addEventListener("touchstart", touchStart, false);
+		window.addEventListener("touchmove", touchMove, false);
+		window.addEventListener("touchend", touchEnd, false);
 		ResizeCanvas();
 		
 		setInterval(TimeUpdate, 27);
 		
+	}
+
+	function touchStart(e) {
+		console.log('touch start');
+		e.preventDefault();
+		MouseDown(convertTouch(e));
+	}
+
+	function touchMove(e) {
+		e.preventDefault();
+		MouseMove(convertTouch(e));
+	}
+
+	function touchEnd(e) {
+		e.preventDefault();
+		MouseUp(convertTouch(e));
+	}
+
+	function convertTouch(e) {
+		if (e.touches.length > 0) {
+			return {
+				layerX : e.touches[0].clientX,
+				layerY : e.touches[0].clientY,
+			};
+		}
 	}
 
 	function initParticles() {

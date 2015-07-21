@@ -2,6 +2,8 @@ var designer = $("#designer");
 var engineer = $("#engineer");
 var innovator = $("#innovator");
 
+var original_size = '3em';
+var zoom_size = '3.5em';
 
 //Animate Three Words in
 //----------------------------------------
@@ -47,7 +49,7 @@ function addListeners() {
 	$('#designer-over').mouseover(function() {
 		$('.iam').stop();
 		designer.animate(
-			{'font-size': '4.5em'},
+			{'font-size': zoom_size},
 			100,
 			"easeOutExpo",
 			shrink
@@ -59,7 +61,7 @@ function addListeners() {
 	$('#innovator-over').mouseover(function() {
 		$('.iam').stop();
 		innovator.animate(
-			{'font-size': '4.5em'},
+			{'font-size': zoom_size},
 			100,
 			"easeOutExpo",
 			shrink
@@ -70,7 +72,7 @@ function addListeners() {
 	$('#engineer-over').mouseover(function() {
 		$('.iam').stop();
 		engineer.animate(
-			{'font-size': '4.5em'},
+			{'font-size': zoom_size},
 			100,
 			"easeOutExpo",
 			shrink
@@ -83,7 +85,7 @@ function addListeners() {
 
 
 function shrink() {
-	$('.iam').animate({'font-size':'4.2em'},
+	$('.iam').animate({'font-size': original_size},
 		400,
 		"easeOutExpo");
 }
