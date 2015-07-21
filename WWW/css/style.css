@@ -16,7 +16,6 @@ a:hover {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .section {
   	text-align: center;
-  	height: 100%;
   	position: relative;
 	left: 0%;
 	-webkit-touch-callout: none;
@@ -45,12 +44,42 @@ a:hover {
 	background: url(../img/diagonals.png) repeat rgba(0,0,0,.5);
 }
 
+/* Nav
+-------------------------------------------------- */
+.nav .section {
+
+}
+#designer {
+	color: #F96474;
+}
+
+#engineer {
+	color: #95EDC9;
+}
+
+#nav {
+	font-weight: 400;
+	color: white;
+}
+
+.nav-item {
+	transition: color .5s;
+	margin-bottom: 5%;
+}
+
+#name {
+	margin-top: 10%;
+	color: white;
+	margin-bottom: 20px;
+}
+
 /* Work
 -------------------------------------------------- */
 .work {
 	color: grey;
 	position: relative;
-	top: -100%;
+	height: 100%;
+	top: -10%;
 	left: -100%;
 	text-align: center;
 }
@@ -80,29 +109,7 @@ a:hover {
 	padding-top: 10%;
 }
 
-#designer {
-	color: #F96474;
-}
 
-#engineer {
-	color: #95EDC9;
-}
-
-#nav {
-	font-weight: 400;
-	color: white;
-}
-
-.nav-item {
-	transition: color .5s;
-	margin-bottom: 5%;
-}
-
-#name {
-	margin-top: 10%;
-	color: white;
-	margin-bottom: 20px;
-}
 
 .iam {
 	font-weight: 800;

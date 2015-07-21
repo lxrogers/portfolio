@@ -81,10 +81,8 @@
 
 		//animate from nav animations
 		if (heroSection.is(':animated')) {
-			//calculate animation dx
-			var currX = parseFloat(heroSection.css('left'));
-			var dx = currX - navAnimationX;
-			console.log(currX, navAnimationX, dx);
+			var currX = parseFloat(heroSection.css('left'))
+			var dx =  currX - navAnimationX;
 			slideParticles(-1 * dx);
 			navAnimationX = currX;
 		} else {
