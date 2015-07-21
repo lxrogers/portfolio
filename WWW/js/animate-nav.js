@@ -4,7 +4,8 @@ var heroSection = $('.hero')
 var workButton = $('#work');
 var homeButton = $('#home');
 var aboutButton = $('#about');
-var initSelected = false;
+
+homeButton.css({'border-bottom' : '2px solid white'})
 
 workButton.hover(function(event) {highlight(event.currentTarget);},
 									function(event) {unhighlightAll();});
@@ -79,6 +80,7 @@ function navMouseMove(e) {
 	}
 }
 
+//helper functions, use NavToXXX
 function goToWorks() {
 	$('.section').stop();
 	workSection.animate(
@@ -114,10 +116,10 @@ function goToHome() {
 function checkStick() {
 	if (currPage == "HOME") {
 		if (heroSectionX > -30 && heroSectionX < 30) {
-			goToHome();
+			navToHome();
 		}
 		else if (heroSectionX > 30) {
-			goToWorks();
+			navToWorks();
 		}
 		else if (heroSectionX < -30) {
 			//go to about
@@ -125,10 +127,10 @@ function checkStick() {
 	}
 	else if (currPage == "WORKS") {
 		if (heroSectionX > 70) {
-			goToWorks();
+			navToWorks();
 		}
 		else if (heroSectionX < 70) {
-			goToHome();
+			navToHome();
 		}
 	}
 	else if (currPage == "ABOUT") {
@@ -137,7 +139,15 @@ function checkStick() {
 }
 
 function navToWorks() {
+	$('.nav-item').css({'border-bottom' : 'none'});
+	workButton.css({'border-bottom' : '2px solid white'});
 	goToWorks();
+}
+
+function navToHome() {
+	$('.nav-item').css({'border-bottom' : 'none'});
+	homeButton.css({'border-bottom' : '2px solid white'});
+	goToHome();	
 }
 
 function navMouseUp(e) {
@@ -166,5 +176,5 @@ window.addEventListener("touchmove", navTouchMove, false);
 window.addEventListener("touchend", navTouchEnd, false);
 
 workButton.click(navToWorks);
-homeButton.click(goToHome);
+homeButton.click(navToHome);
 
