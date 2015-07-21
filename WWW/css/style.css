@@ -15,8 +15,17 @@ a:hover {
 /* Sections
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .section {
-  padding: 8rem 0 7rem;
   text-align: center;
+  height: 100%;
+  	position: relative;
+	left: 0%;
+	height: 100%;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 .section-heading,
@@ -37,16 +46,21 @@ a:hover {
 	background: url(../img/diagonals.png) repeat rgba(0,0,0,.5);
 }
 
+/* Work
+-------------------------------------------------- */
+.work {
+	color: grey;
+	position: relative;
+	top: -100%;
+	left: -100%;
+	text-align: center;
+}
+
+
 /* Hero
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .hero {
-	height: 100%;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+
 }
 
 #canvas {
@@ -59,18 +73,12 @@ a:hover {
 }
 
 .hero .container {
-	height: 100%;
+	height: 90%;
 }
 
 .hero .row.headline {
 	width: 100%;
-	margin-top: 10%;
-}
-
-.hero .row.headline.over {
-	
-	width: 100%;
-	z-index: 99;
+	padding-top: 10%;
 }
 
 #designer {
@@ -81,19 +89,6 @@ a:hover {
 	color: #95EDC9;
 }
 
-#designer-over, #innovator-over, #engineer-over {
-	height: 100px;
-}
-
-#gradient {
-	background: url(../img/gradient-dark-stripe-hz.png) repeat-x;
-	opacity: .5;
-	background-size: 100% 85%;
-	position: absolute;
-	display: block;
-	width: 100%;
-	height: 250%;
-}
 #nav {
 	font-weight: 400;
 	color: white;
@@ -105,6 +100,7 @@ a:hover {
 }
 
 #name {
+	margin-top: 10%;
 	color: white;
 	margin-bottom: 20px;
 }

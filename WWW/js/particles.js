@@ -31,13 +31,6 @@
 
 	var particles;
 	var context;
-	
-	//EVERYTHING BEGINS HERE
-	if (canvas && canvas.getContext) {
-		context = canvas.getContext('2d');
-		initEnvironment();
-		initParticles();
-	}
 
 	function initEnvironment() {
 		window.addEventListener('mousemove', MouseMove, false);
@@ -181,14 +174,15 @@
 	<!-- MOUSE EVENTS -->
 
 	function MouseMove(e) {
-		mouse.x = e.layerX;
-		mouse.y = e.layerY;
+		console.log("hi");
+		mouse.x = e.pageX;
+		mouse.y = e.pageY;
 	}
 
 	function MouseDown(e) {
 		mouseDown = true;
-		originMouse.x = e.layerX;
-		originMouse.y = e.layerY;
+		originMouse.x = e.pageX;
+		originMouse.y = e.pageY;
 	}
 
 	function MouseUp(e) {
@@ -198,7 +192,6 @@
 
 	<!-- TOUCH EVENTS -->
 	function touchStart(e) {
-		console.log('touch start');
 		e.preventDefault();
 		MouseDown(convertTouch(e));
 	}
@@ -216,8 +209,8 @@
 	function convertTouch(e) {
 		if (e.touches.length > 0) {
 			return {
-				layerX : e.touches[0].clientX,
-				layerY : e.touches[0].clientY,
+				pageX : e.touches[0].clientX,
+				pageY : e.touches[0].clientY,
 			};
 		}
 	}
@@ -225,14 +218,14 @@
 	function ResizeCanvas(e) {
 		CANVAS_RATIO = canvas.parentNode.offsetWidth / canvas.parentNode.offsetHeight;
 		canvas.width = CANVAS_HEIGHT * CANVAS_RATIO;
-		canvas.style.width = window.innerWidth + 'px';
+		canvas.style.width = (window.innerWidth - 10) + 'px';
 		canvas.height = CANVAS_HEIGHT;
-		canvas.style.height = window.innerHeight + 'px';
+		canvas.style.height = (window.innerHeight -10) + 'px';
 
 		half_min_dimension = Math.min(canvas.height / 2, canvas.width / 2);
 
 		clearCanvas();
-		curr_particles = Math.min(NUM_PARTICLES, 
+		curr_particles = Math.min(NUM_PARTICLES,
 			NUM_PARTICLES * canvas.parentNode.offsetWidth / (SEED_SIZE * PARTICLE_TO_SCREEN_RATIO)
 		);
 	}
@@ -283,3 +276,11 @@
 	function Circle(x, y) {	shapeAll(x, y, CircleXFunc, CircleYFunc, half_min_dimension * .75,	circleColors, true);}
 	function CircleXFunc(t) {return Math.cos(t);}
 	function CircleYFunc(t) {return Math.sin(t);}
+
+
+		//EVERYTHING BEGINS HERE
+	if (canvas && canvas.getContext) {
+		context = canvas.getContext('2d');
+		initEnvironment();
+		initParticles();
+	}

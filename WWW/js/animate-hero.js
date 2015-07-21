@@ -2,8 +2,8 @@ var designer = $("#designer");
 var engineer = $("#engineer");
 var innovator = $("#innovator");
 
-var original_size = '3em';
-var zoom_size = '3.5em';
+var original_size = '2.5em';
+var zoom_size = '3em';
 
 //Animate Three Words in
 //----------------------------------------
@@ -46,7 +46,7 @@ function animateIntro() {
 //----------------------------------------------
 function addListeners() {
 
-	$('#designer-over').mouseover(function() {
+	$('#designer').mouseover(function() {
 		$('.iam').stop();
 		designer.animate(
 			{'font-size': zoom_size},
@@ -58,7 +58,7 @@ function addListeners() {
 		Heart(canvas.width/2, canvas.height * 2/5);
 	});
 	
-	$('#innovator-over').mouseover(function() {
+	$('#innovator').mouseover(function() {
 		$('.iam').stop();
 		innovator.animate(
 			{'font-size': zoom_size},
@@ -69,7 +69,7 @@ function addListeners() {
 		Scatter();
 	});
 
-	$('#engineer-over').mouseover(function() {
+	$('#engineer').mouseover(function() {
 		$('.iam').stop();
 		engineer.animate(
 			{'font-size': zoom_size},
