@@ -72,13 +72,22 @@ a:hover {
 	color: white;
 	margin-bottom: 20px;
 }
+/* About
+-------------------------------------------------- */
+.about {
+	color: white;
+	top: -10%;
+	height: 50%;
+	left: 100%;
+}
+
 
 /* Work
 -------------------------------------------------- */
 .work {
 	color: grey;
 	position: relative;
-	top: -10%;
+	top: -60%;
 	left: -100%;
 	text-align: center;
 }

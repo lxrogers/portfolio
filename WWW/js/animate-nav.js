@@ -1,5 +1,6 @@
 var workSection = $('#work_section');
 var heroSection = $('.hero')
+var aboutSection = $('#about_section');
 
 var workButton = $('#work');
 var homeButton = $('#home');
@@ -44,6 +45,8 @@ function highlightAll() {
 var navX = 0;
 var workSectionX = -100;
 var heroSectionX = 0;
+var aboutSectionX = 100;
+
 var navMouseDownBooleanFlag = false;
 var stickThreshold = 30;
 var currPage = "HOME";
@@ -61,9 +64,11 @@ function navMouseDown(e) {
 
 	workSection.stop();
 	heroSection.stop();
+	aboutSection.stop();
 
 	workSectionX = getLeftPercentage(workSection);
 	heroSectionX = getLeftPercentage(heroSection);
+	aboutSectionX = getLeftPercentage(aboutSection);
 }
 
 function navMouseMove(e) {
@@ -74,9 +79,11 @@ function navMouseMove(e) {
 
 		workSectionX -= dx;
 		heroSectionX -= dx;
+		aboutSectionX -= dx;
 
 		workSection.css('left' , workSectionX + '%');
 		heroSection.css('left', heroSectionX + '%');
+		aboutSection.css('left', aboutSectionX + '%');
 	}
 }
 
@@ -91,9 +98,14 @@ function goToWorks() {
 		{'left' : '100%'},
 		1000,
 		"easeOutCubic");
+	aboutSection.animate(
+		{'left' : '200%'},
+		1000,
+		"easeOutCubic");
 
 	workSectionX = 0;
 	heroSectionX = 100;
+	aboutSectionX = 200;
 	currPage = "WORKS";
 }
 
@@ -107,10 +119,36 @@ function goToHome() {
 		{'left' : '0%'},
 		1000,
 		"easeOutCubic");
+	aboutSection.animate(
+		{'left' : '100%'},
+		1000,
+		"easeOutCubic");
 
 	workSectionX = -100;
 	heroSectionX = 0;
+	aboutSectionX = 100;
 	currPage = "HOME";
+}
+
+function goToAbout() {
+	$('.section').stop();
+	workSection.animate(
+		{'left' : '-200%'},
+		1000,
+		"easeOutCubic");
+	heroSection.animate(
+		{'left' : '-100%'},
+		1000,
+		"easeOutCubic");
+	aboutSection.animate(
+		{'left' : '0%'},
+		1000,
+		"easeOutCubic");
+
+	workSectionX = -200;
+	heroSectionX = -100;
+	aboutSectionX = 0;
+	currPage = "ABOUT";
 }
 
 function checkStick() {
@@ -150,6 +188,12 @@ function navToHome() {
 	goToHome();	
 }
 
+function navToAbout() {
+	$('.nav-item').css({'border-bottom' : 'none'});
+	aboutButton.css({'border-bottom' : '2px solid white'});
+	goToAbout();
+}
+
 function navMouseUp(e) {
 	navMouseDownBooleanFlag = false;
 	checkStick();
@@ -177,4 +221,5 @@ window.addEventListener("touchend", navTouchEnd, false);
 
 workButton.click(navToWorks);
 homeButton.click(navToHome);
+aboutButton.click(navToAbout);
 
