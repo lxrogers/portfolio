@@ -1,13 +1,13 @@
 	//PARTICLE PARAMS
-	var NUM_PARTICLES = 55;
+	var NUM_PARTICLES = 45;
 	var curr_particles = NUM_PARTICLES;
 	var PARTICLE_TO_SCREEN_RATIO = 20;
 	var VELOCITY = 1.3;
 	var colors = [ "#F27979", "#FFD6D6", "#B31717", "#E6FFFF", "#DA95ED", "#95EDC9"];
 	var heartColors = [ "#F27979", "#FFD6D6", "#B31717" ];
 	var circleColors = [ "#E6FFFF", "#DA95ED", "#95EDC9" ]
-	var SEED_SIZE = 35;
-	var FLICKER_RATE = .02;
+	var SEED_SIZE = 30;
+	var FLICKER_RATE = .06;
 
 	//ENVIRONMENT PARAMS
 	var canvas = document.getElementById('projector');
@@ -16,6 +16,13 @@
 	var half_min_dimension;
 	var CANVAS_RATIO;
 	var CANVAS_HEIGHT = 500;
+	var mouseDown = false;
+
+	var originMouse = {
+		x : 0,
+		y : 0,
+		drawn : false
+	};
 	
 	var mouse = {
 		x : 0,
@@ -33,7 +40,7 @@
 	}
 
 	function initEnvironment() {
-		canvas.addEventListener('mousemove', MouseMove, false);
+		window.addEventListener('mousemove', MouseMove, false);
 		window.addEventListener('mousedown', MouseDown, false);
 		window.addEventListener('mouseup', MouseUp, false);
 		window.addEventListener('resize', ResizeCanvas, false);
@@ -51,7 +58,7 @@
 				y : 0,
 				originX : Math.random() * canvas.width,
 				originY : Math.random() * canvas.height,
-				vx : ((Math.random() * (VELOCITY * 2)) - VELOCITY) + 2,
+				vx : ((Math.random() * (VELOCITY * 2)) - VELOCITY) + 1,
 				vy : ((Math.random() * (VELOCITY * 2)) - VELOCITY) + 2,
 				currentSize : Math.random() * SEED_SIZE,
 				accel : false,
@@ -64,6 +71,15 @@
 	function TimeUpdate(e) {
 		eraseParticles();
 
+		if (mouseDown && originMouse.drawn == false) {
+			var dx = originMouse.x - mouse.x;
+			for (var i = 0; i < curr_particles; i++) {
+				particles[i].originX -= dx * particles[i].currentSize / SEED_SIZE;
+			}
+
+			originMouse.x = mouse.x;
+		}
+
 		for ( var i = 0; i < curr_particles; i++) {
 			particle = particles[i];
 
@@ -72,7 +88,6 @@
 			movePart(particle);
 			drawPart(particle);
 		}
-
 		updateCounter();
 	}
 
@@ -89,7 +104,7 @@
 		if (particle.currentSize < 3) {
 			particle.currentSize = Math.random() * SEED_SIZE;
 		} else {
-			particle.currentSize *= .965;
+			particle.currentSize *= .96;
 		}
 	}
 
@@ -101,8 +116,8 @@
 	function movePart(particle) {
 		if (!particle.lock) {
 			border(particle);
-			particle.originX += particle.vx  * 1.5 * (1 - (particle.currentSize / SEED_SIZE ));
-			particle.originY += particle.vy * 1.5 * (1 - (particle.currentSize / SEED_SIZE ));
+			particle.originX += particle.vx * .75;//  * 1.5 * (1 - (particle.currentSize / SEED_SIZE ));
+			particle.originY += particle.vy * .75;// * 1.5 * (1 - (particle.currentSize / SEED_SIZE ));
 		}
 	}
 	
@@ -136,17 +151,17 @@
 			particle.originX = 0;
 			particle.originY = Math.random() * canvas.height;
 		} else if (particle.originX + particle.currentSize < 0) {
-			particles.originX = canvas.width;
+			particle.originX = canvas.width;
 			particle.originY = Math.random() * canvas.height;
 		} else {
 		}
 
 		if (particle.originY > canvas.height) {
 			particle.originY = 0;
-			particle.originX = Math.random() * canvas.height;
+			particle.originX = Math.random() * canvas.width;
 		} else if (particle.originY  + particle.currentSize < 0) {
 			particle.originY = canvas.height;
-			particle.originX = Math.random() * canvas.height;
+			particle.originX = Math.random() * canvas.width;
 		} else {
 		}
 	}
@@ -165,11 +180,16 @@
 	}
 
 	function MouseDown(e) {
-		Scatter();
+		mouseDown = true;
+		originMouse.x = e.layerX;
+		originMouse.y = e.layerY;
 	}
+
 	function MouseUp(e) {
+		mouseDown = false;
 		release();
 	}
+
 	function ResizeCanvas(e) {
 		CANVAS_RATIO = canvas.parentNode.offsetWidth / canvas.parentNode.offsetHeight;
 		canvas.width = CANVAS_HEIGHT * CANVAS_RATIO;

@@ -33,7 +33,7 @@ function animateIntro() {
 			1000,
 			"easeOutCubic"
 		);
-		MouseDown();
+		Scatter();
 
 		addListeners();
 
@@ -64,7 +64,7 @@ function addListeners() {
 			"easeOutExpo",
 			shrink
 		);
-		MouseDown();
+		Scatter();
 	});
 
 	$('#engineer-over').mouseover(function() {
