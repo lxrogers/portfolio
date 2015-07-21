@@ -54,31 +54,6 @@
 		
 	}
 
-	function touchStart(e) {
-		console.log('touch start');
-		e.preventDefault();
-		MouseDown(convertTouch(e));
-	}
-
-	function touchMove(e) {
-		e.preventDefault();
-		MouseMove(convertTouch(e));
-	}
-
-	function touchEnd(e) {
-		e.preventDefault();
-		MouseUp(convertTouch(e));
-	}
-
-	function convertTouch(e) {
-		if (e.touches.length > 0) {
-			return {
-				layerX : e.touches[0].clientX,
-				layerY : e.touches[0].clientY,
-			};
-		}
-	}
-
 	function initParticles() {
 		particles = [];
 		for ( var i = 0; i < NUM_PARTICLES; i++) {
@@ -203,6 +178,8 @@
 		}
 	}
 
+	<!-- MOUSE EVENTS -->
+
 	function MouseMove(e) {
 		mouse.x = e.layerX;
 		mouse.y = e.layerY;
@@ -217,6 +194,32 @@
 	function MouseUp(e) {
 		mouseDown = false;
 		release();
+	}
+
+	<!-- TOUCH EVENTS -->
+	function touchStart(e) {
+		console.log('touch start');
+		e.preventDefault();
+		MouseDown(convertTouch(e));
+	}
+
+	function touchMove(e) {
+		e.preventDefault();
+		MouseMove(convertTouch(e));
+	}
+
+	function touchEnd(e) {
+		e.preventDefault();
+		MouseUp(convertTouch(e));
+	}
+
+	function convertTouch(e) {
+		if (e.touches.length > 0) {
+			return {
+				layerX : e.touches[0].clientX,
+				layerY : e.touches[0].clientY,
+			};
+		}
 	}
 
 	function ResizeCanvas(e) {

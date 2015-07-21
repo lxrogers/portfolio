@@ -64,11 +64,11 @@ a:hover {
 
 .hero .row.headline {
 	width: 100%;
-	margin-top: 20%;
+	margin-top: 10%;
 }
 
 .hero .row.headline.over {
-	top: 35%;
+	
 	width: 100%;
 	z-index: 99;
 }
@@ -101,6 +101,7 @@ a:hover {
 
 .nav-item {
 	transition: color .5s;
+	margin-bottom: 5%;
 }
 
 #name {
@@ -110,10 +111,8 @@ a:hover {
 
 .iam {
 	font-weight: 800;
-	font-size: 3em;
+	font-size: 2.5em;
 	color: white;
 	opacity: 0;
 	z-index: 1;
-	
-
 }
