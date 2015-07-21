@@ -16,6 +16,8 @@
 	var half_min_dimension;
 	var CANVAS_RATIO;
 	var CANVAS_HEIGHT = 500;
+
+	//particle sliding variables
 	var mouseDown = false;
 
 	var originMouse = {
@@ -28,6 +30,8 @@
 		x : 0,
 		y : 0
 	};
+
+	navAnimationX = 0;
 
 	var particles;
 	var context;
@@ -68,13 +72,23 @@
 	function TimeUpdate(e) {
 		eraseParticles();
 
+		//animate from mouse
 		if (mouseDown && originMouse.drawn == false) {
 			var dx = originMouse.x - mouse.x;
-			for (var i = 0; i < curr_particles; i++) {
-				particles[i].originX -= dx * particles[i].currentSize / SEED_SIZE;
-			}
-
+			slideParticles(dx);
 			originMouse.x = mouse.x;
+		}
+
+		//animate from nav animations
+		if (heroSection.is(':animated')) {
+			//calculate animation dx
+			var currX = parseFloat(heroSection.css('left'));
+			var dx = currX - navAnimationX;
+			console.log(currX, navAnimationX, dx);
+			slideParticles(-1 * dx);
+			navAnimationX = currX;
+		} else {
+			navAnimationX = parseFloat(heroSection.css('left'));
 		}
 
 		for ( var i = 0; i < curr_particles; i++) {
@@ -143,6 +157,13 @@
 		}
 	}
 
+	//slide the particles in pixels
+	function slideParticles(dx) {
+		for (var i = 0; i < curr_particles; i++) {
+			particles[i].originX -= dx * particles[i].currentSize / SEED_SIZE;
+		}
+	}
+
 	function border(particle) {
 		if (particle.originX > canvas.width) {
 			particle.originX = 0;
@@ -174,7 +195,6 @@
 	<!-- MOUSE EVENTS -->
 
 	function MouseMove(e) {
-		console.log("hi");
 		mouse.x = e.pageX;
 		mouse.y = e.pageY;
 	}

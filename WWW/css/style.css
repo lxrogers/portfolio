@@ -15,11 +15,10 @@ a:hover {
 /* Sections
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .section {
-  text-align: center;
-  height: 100%;
+  	text-align: center;
+  	height: 100%;
   	position: relative;
 	left: 0%;
-	height: 100%;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;

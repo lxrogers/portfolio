@@ -1,4 +1,5 @@
 var workSection = $('#work_section');
+var heroSection = $('.hero')
 
 var workButton = $('#work');
 var aboutButton = $('#about');
@@ -35,14 +36,32 @@ function highlightAll() {
 	}
 }
 
+/* SLIDING ANIMATIONS
+-------------------------------------------------------------------------------*/
+
 var navX = 0;
 var workSectionX = -100;
+var heroSectionX = 0;
 var navMouseDownBooleanFlag = false;
+var leftThreshold = 30;
+
+//assumes full width divs
+function getLeftPercentage(obj) {
+	x_px = parseFloat(obj.css('left'));
+	x_pct = x_px / window.innerWidth;
+	return x_pct * 100;
+}
 
 function navMouseDown(e) {
 	navX = e.pageX;
-	console.log("pageX", e.pageX);
 	navMouseDownBooleanFlag = true;
+
+	workSection.stop();
+	heroSection.stop();
+
+	workSectionX = getLeftPercentage(workSection);
+	heroSectionX = getLeftPercentage(heroSection);
+	console.log(workSection.css('left'));
 }
 
 function navMouseMove(e) {
@@ -52,13 +71,49 @@ function navMouseMove(e) {
 		navX = currX;
 
 		workSectionX -= dx;
+		heroSectionX -= dx;
+
 		workSection.css('left' , workSectionX + '%');
+		heroSection.css('left', heroSectionX + '%');
 	}
 
 }
 
+function checkStick() {
+	//stick to hero page
+	if (heroSectionX > -30 && heroSectionX < 30) {
+		workSection.animate(
+			{'left' : '-100%'},
+			1000,
+			"easeOutCubic");
+		heroSection.animate(
+			{'left' : '0%'},
+			1000,
+			"easeOutCubic");
+
+		workSectionX = -100;
+		heroSectionX = 0;
+	}
+	//stick to work page
+	else if (heroSectionX > 30) {
+		workSection.animate(
+			{'left' : '0%'},
+			1000,
+			"easeOutCubic");
+		heroSection.animate(
+			{'left' : '100%'},
+			1000,
+			"easeOutCubic");
+
+		workSectionX = 0;
+		heroSectionX = 100;
+	}
+	
+}
+
 function navMouseUp(e) {
 	navMouseDownBooleanFlag = false;
+	checkStick();
 }
 
 function navTouchStart(e) {
@@ -80,3 +135,4 @@ window.addEventListener('mouseup', navMouseUp, false);
 window.addEventListener("touchstart", navTouchStart, false);
 window.addEventListener("touchmove", navTouchMove, false);
 window.addEventListener("touchend", navTouchEnd, false);
+
