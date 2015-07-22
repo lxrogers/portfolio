@@ -1,5 +1,6 @@
 html, body {
 	height: 100%;
+	overflow-y:  hidden;
 }
 
 a {
@@ -28,7 +29,7 @@ a:hover {
 
 .section-heading,
 .section-description {
-  margin-bottom: 1.2rem;
+  	margin-bottom: 1.2rem;
 }
 
 /* Shared
@@ -41,9 +42,15 @@ a:hover {
   	width: 100%; 
   	height: 100%;
   	opacity: .7;
-	background: url(../img/diagonals.png) repeat rgba(0,0,0,.5);
+	background: url(../img/diagonals.png) repeat rgba(0,0,0,.6);
+}
+.black {
+	background-color: rgba(0,0,0,.6);
 }
 
+.center {
+	text-align: center;
+}
 /* Nav
 -------------------------------------------------- */
 .nav .section {
@@ -68,7 +75,7 @@ a:hover {
 }
 
 #name {
-	margin-top: 10%;
+	margin-top: 5%;
 	color: white;
 	margin-bottom: 20px;
 }
@@ -76,22 +83,77 @@ a:hover {
 -------------------------------------------------- */
 .about {
 	color: white;
-	top: -10%;
+	top: -85%;
 	height: 50%;
 	left: 100%;
+	text-align: left;
 }
 
+.about img {
+	width: 90%;
+}
 
 /* Work
 -------------------------------------------------- */
-.work {
-	color: grey;
+.works {
+	color: white;
 	position: relative;
-	top: -60%;
+	top: -15%;
 	left: -100%;
 	text-align: center;
+	height: 70%;
+	overflow-y: scroll;
+	width: 100%;
 }
 
+.work {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	text-align: left;
+	background-color: black;
+	margin-bottom: 8%;
+}
+
+.work .bottom {
+	position: absolute;
+	z-index: 100;
+	width: 100%;
+	overflow: hidden;
+}
+
+.work .bottom img {
+	opacity: 1;
+	width: 100%;
+}
+
+.work .overlay {
+	position: absolute;
+	z-index: 110;
+	opacity: 1;
+	height: 100%;
+	width: 100%;
+
+}
+.work .overlay h1 {
+	position: absolute;
+	opacity: 0;
+	font-size: 3.5em;
+	bottom: 70%;
+	left: 5%;
+	margin: auto;
+	width: 100%;
+}
+
+.work .overlay h2 {	
+	position: absolute;
+	opacity: 0;
+	font-size: 1.25em;
+	left: 5%;
+	margin: auto;
+	top: 30%;
+	width: 100%;
+}
 
 /* Hero
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

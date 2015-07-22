@@ -160,7 +160,7 @@ function checkStick() {
 			navToWorks();
 		}
 		else if (heroSectionX < -30) {
-			//go to about
+			navToAbout();
 		}
 	}
 	else if (currPage == "WORKS") {
@@ -172,7 +172,13 @@ function checkStick() {
 		}
 	}
 	else if (currPage == "ABOUT") {
-
+		console.log(heroSectionX);
+		if (heroSectionX > -70) {
+			navToHome();
+		}
+		else if (heroSectionX < -70) {
+			navToAbout();
+		}
 	}
 }
 

@@ -236,9 +236,9 @@
 	function ResizeCanvas(e) {
 		CANVAS_RATIO = canvas.parentNode.offsetWidth / canvas.parentNode.offsetHeight;
 		canvas.width = CANVAS_HEIGHT * CANVAS_RATIO;
-		canvas.style.width = (window.innerWidth - 10) + 'px';
+		canvas.style.width = (window.innerWidth) + 'px';
 		canvas.height = CANVAS_HEIGHT;
-		canvas.style.height = (window.innerHeight -10) + 'px';
+		canvas.style.height = (window.innerHeight) + 'px';
 
 		half_min_dimension = Math.min(canvas.height / 2, canvas.width / 2);
 

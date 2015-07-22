@@ -12,6 +12,7 @@ var zoomTime = 700;
 var delayTime = 125;
 
 function hoverWork() {
+	$(".work").stop();
 	$(this).find(".bottom").fadeTo(100, .5)
 	var h1 = $(this).find(".overlay").find("h1");
 	var h2 = $(this).find(".overlay").find("h2");
