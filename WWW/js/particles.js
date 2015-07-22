@@ -210,6 +210,9 @@
 
 	<!-- TOUCH EVENTS -->
 	function touchStart(e) {
+		if (e.target.tagName=="HTML" || e.target.tagName=="BODY") {
+		e.preventDefault();
+	}
 		MouseDown(convertTouch(e));
 	}
 

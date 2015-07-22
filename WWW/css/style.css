@@ -26,6 +26,7 @@ a:hover {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	overflow: hidden;
 }
 
 .section-heading,
@@ -54,9 +55,6 @@ a:hover {
 }
 /* Nav
 -------------------------------------------------- */
-.nav .section {
-
-}
 #designer {
 	color: #F96474;
 }
@@ -95,10 +93,10 @@ a:hover {
 /* About
 -------------------------------------------------- */
 .about {
-	position: absolute;
+	position: relative;
 	width: 100%;
 	color: white;
-	top: 15%;
+	top: -120%;
 	height: 100%;
 	left: 100%;
 	text-align: left;
@@ -112,8 +110,8 @@ a:hover {
 -------------------------------------------------- */
 .works {
 	color: white;
-	position: absolute;
-	top: 15%;
+	position: relative;
+	top: 5%;
 	left: -100%;
 	text-align: center;
 	height: 100%;
@@ -173,7 +171,7 @@ a:hover {
 /* Hero
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .hero {
-
+	top: -100%;
 }
 
 #canvas {
@@ -186,12 +184,11 @@ a:hover {
 }
 
 .hero .container {
-	height: 90%;
 }
 
 .hero .row.headline {
 	width: 100%;
-	padding-top: 10%;
+	margin-top: 10%;
 }
 
 
