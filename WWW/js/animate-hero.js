@@ -9,7 +9,7 @@ var zoom_size = '3em';
 //----------------------------------------
 function animateIntro() {
 	var delayTime = 1200;
-	var initTime = 750;
+	var initTime = 200;
 	
 	setTimeout(function() {
 		designer.animate(

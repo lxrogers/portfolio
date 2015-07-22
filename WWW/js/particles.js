@@ -210,12 +210,10 @@
 
 	<!-- TOUCH EVENTS -->
 	function touchStart(e) {
-		e.preventDefault();
 		MouseDown(convertTouch(e));
 	}
 
 	function touchMove(e) {
-		e.preventDefault();
 		MouseMove(convertTouch(e));
 	}
 

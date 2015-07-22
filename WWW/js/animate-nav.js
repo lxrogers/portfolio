@@ -206,14 +206,15 @@ function navMouseUp(e) {
 }
 
 function navTouchStart(e) {
-
+	navMouseDown(convertTouch(e));
 }
 
 function navTouchMove(e) {
-
+	navMouseMove(convertTouch(e));
 }
 
 function navTouchEnd(e) {
+	navMouseUp(convertTouch(e));
 
 }
 

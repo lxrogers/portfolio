@@ -1,6 +1,7 @@
 html, body {
 	height: 100%;
-	overflow-y:  hidden;
+	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
 a {
@@ -83,22 +84,22 @@ a:hover {
 -------------------------------------------------- */
 .about {
 	color: white;
-	top: -85%;
-	height: 50%;
+	top: -100%;
+	height: 100%;
 	left: 100%;
 	text-align: left;
+	overflow-y: scroll;
 }
 
 .about img {
-	width: 90%;
+	width: 100%;
 }
-
 /* Work
 -------------------------------------------------- */
 .works {
 	color: white;
 	position: relative;
-	top: -15%;
+	top: -30%;
 	left: -100%;
 	text-align: center;
 	height: 70%;
