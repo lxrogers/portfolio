@@ -9,13 +9,16 @@ resizeWorks();
 
 $(window).resize(resizeWorks);
 var zoomTime = 700;
-var delayTime = 125;
+var delayTime = 100;
 
 function hoverWork() {
 	$(".work").stop();
-	$(this).find(".bottom").fadeTo(100, .5)
+	$(this).find(".bottom").fadeTo(100, .5);
+
 	var h1 = $(this).find(".overlay").find("h1");
 	var h2 = $(this).find(".overlay").find("h2");
+	h1.stop();
+	h2.stop();
 	
 	h1.delay(delayTime).animate(
 		{fontSize: '4em', opacity: 1,},
@@ -29,6 +32,8 @@ function hoverWork() {
 function unHoverWork() {
 	var h1 = $(this).find(".overlay").find("h1");
 	var h2 = $(this).find(".overlay").find("h2");
+	h1.stop();
+	h2.stop();
 
 	h1.delay(delayTime).animate(
 		{fontSize: '3.5em', opacity: 0},
