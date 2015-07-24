@@ -3,6 +3,7 @@ var heroSection = $('.hero')
 var aboutSection = $('#about_section');
 
 var sections = [workSection, heroSection, aboutSection];
+//page ids. These equal the page location relative to heroSectionX %;
 var ABOUT_PAGE = 0;
 var HOME_PAGE = 100;
 var WORKS_PAGE = 200;
@@ -17,7 +18,7 @@ workButton.hover(function(event) {highlight(event.currentTarget);},
 									function(event) {unhighlightAll();});
 
 homeButton.hover(function(event) {highlight(event.currentTarget);	},
-									function(event) {	unhighlightAll();	});
+									function(event) {unhighlightAll();});
 
 aboutButton.hover(function(event) {highlight(event.currentTarget);},
 									function(event) {unhighlightAll();});
@@ -94,7 +95,6 @@ function navMouseMove(e) {
 
 function goTo(page_id) {
 	$('.section').stop();
-	console.log(sections.length);
 	for (var i = -2; i < sections.length - 2; i++) {
 
 		animationX = page_id + (i * 100) + '%';
@@ -102,59 +102,52 @@ function goTo(page_id) {
 			{'left' : animationX},
 			1000,
 			"easeOutCubic");
-		console.log('animating', sections[i+1], 'to',animationX);
 	}
 	currPage = page_id;
 }
 
-
 function checkStick() {
 	if (currPage == HOME_PAGE) {
 		if (heroSectionX > -30 && heroSectionX < 30) {
-			navToHome();
+			navTo(HOME_PAGE);
 		}
 		else if (heroSectionX > 30) {
-			navToWorks();
+			navTo(WORKS_PAGE);
 		}
 		else if (heroSectionX < -30) {
-			navToAbout();
+			navTo(ABOUT_PAGE);
 		}
 	}
 	else if (currPage == WORKS_PAGE) {
 		if (heroSectionX > 70) {
-			navToWorks();
+			navTo(WORKS_PAGE);
 		}
 		else if (heroSectionX < 70) {
-			navToHome();
+			navTo(HOME_PAGE);
 		}
 	}
 	else if (currPage == ABOUT_PAGE) {
 		console.log(heroSectionX);
 		if (heroSectionX > -70) {
-			navToHome();
+			navTo(HOME_PAGE);
 		}
 		else if (heroSectionX < -70) {
-			navToAbout();
+			navTo(ABOUT_PAGE);
 		}
 	}
 }
-
-function navToWorks() {
+function navTo(page_id) {
 	$('.nav-item').css({'border-bottom' : 'none'});
-	workButton.css({'border-bottom' : '2px solid white'});
-	goTo(WORKS_PAGE);
-}
-
-function navToHome() {
-	$('.nav-item').css({'border-bottom' : 'none'});
-	homeButton.css({'border-bottom' : '2px solid white'});
-	goTo(HOME_PAGE);
-}
-
-function navToAbout() {
-	$('.nav-item').css({'border-bottom' : 'none'});
-	aboutButton.css({'border-bottom' : '2px solid white'});
-	goTo(ABOUT_PAGE);
+	if (page_id == WORKS_PAGE) {
+		workButton.css({'border-bottom' : '2px solid white'});
+	}
+	else if (page_id == HOME_PAGE) {
+		homeButton.css({'border-bottom' : '2px solid white'});
+	}
+	else if (page_id == ABOUT_PAGE) {
+		aboutButton.css({'border-bottom' : '2px solid white'});	
+	}
+	goTo(page_id);
 }
 
 function navMouseUp(e) {
@@ -183,7 +176,7 @@ window.addEventListener("touchstart", navTouchStart, false);
 window.addEventListener("touchmove", navTouchMove, false);
 window.addEventListener("touchend", navTouchEnd, false);
 
-workButton.click(navToWorks);
-homeButton.click(navToHome);
-aboutButton.click(navToAbout);
+workButton.click(function() {navTo(WORKS_PAGE);});
+homeButton.click(function() {navTo(HOME_PAGE);});
+aboutButton.click(function() {navTo(ABOUT_PAGE);});
 
