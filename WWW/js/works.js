@@ -29,6 +29,7 @@ function hoverWork() {
 		zoomTime,
 		"easeOutExpo");
 }
+
 function unHoverWork() {
 	var h1 = $(this).find(".overlay").find("h1");
 	var h2 = $(this).find(".overlay").find("h2");

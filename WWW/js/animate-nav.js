@@ -2,6 +2,11 @@ var workSection = $('#work_section');
 var heroSection = $('.hero')
 var aboutSection = $('#about_section');
 
+var sections = [workSection, heroSection, aboutSection];
+var ABOUT_PAGE = 0;
+var HOME_PAGE = 100;
+var WORKS_PAGE = 200;
+
 var workButton = $('#work');
 var homeButton = $('#home');
 var aboutButton = $('#about');
@@ -49,7 +54,7 @@ var aboutSectionX = 100;
 
 var navMouseDownBooleanFlag = false;
 var stickThreshold = 30;
-var currPage = "HOME";
+var currPage = HOME_PAGE;
 
 //assumes full width divs
 function getLeftPercentage(obj) {
@@ -87,72 +92,24 @@ function navMouseMove(e) {
 	}
 }
 
-//helper functions, use NavToXXX
-function goToWorks() {
+function goTo(page_id) {
 	$('.section').stop();
-	workSection.animate(
-		{'left' : '0%'},
-		1000,
-		"easeOutCubic");
-	heroSection.animate(
-		{'left' : '100%'},
-		1000,
-		"easeOutCubic");
-	aboutSection.animate(
-		{'left' : '200%'},
-		1000,
-		"easeOutCubic");
+	console.log(sections.length);
+	for (var i = -2; i < sections.length - 2; i++) {
 
-	workSectionX = 0;
-	heroSectionX = 100;
-	aboutSectionX = 200;
-	currPage = "WORKS";
+		animationX = page_id + (i * 100) + '%';
+		sections[i + 2].animate(
+			{'left' : animationX},
+			1000,
+			"easeOutCubic");
+		console.log('animating', sections[i+1], 'to',animationX);
+	}
+	currPage = page_id;
 }
 
-function goToHome() {
-	$('.section').stop();
-	workSection.animate(
-		{'left' : '-100%'},
-		1000,
-		"easeOutCubic");
-	heroSection.animate(
-		{'left' : '0%'},
-		1000,
-		"easeOutCubic");
-	aboutSection.animate(
-		{'left' : '100%'},
-		1000,
-		"easeOutCubic");
-
-	workSectionX = -100;
-	heroSectionX = 0;
-	aboutSectionX = 100;
-	currPage = "HOME";
-}
-
-function goToAbout() {
-	$('.section').stop();
-	workSection.animate(
-		{'left' : '-200%'},
-		1000,
-		"easeOutCubic");
-	heroSection.animate(
-		{'left' : '-100%'},
-		1000,
-		"easeOutCubic");
-	aboutSection.animate(
-		{'left' : '0%'},
-		1000,
-		"easeOutCubic");
-
-	workSectionX = -200;
-	heroSectionX = -100;
-	aboutSectionX = 0;
-	currPage = "ABOUT";
-}
 
 function checkStick() {
-	if (currPage == "HOME") {
+	if (currPage == HOME_PAGE) {
 		if (heroSectionX > -30 && heroSectionX < 30) {
 			navToHome();
 		}
@@ -163,7 +120,7 @@ function checkStick() {
 			navToAbout();
 		}
 	}
-	else if (currPage == "WORKS") {
+	else if (currPage == WORKS_PAGE) {
 		if (heroSectionX > 70) {
 			navToWorks();
 		}
@@ -171,7 +128,7 @@ function checkStick() {
 			navToHome();
 		}
 	}
-	else if (currPage == "ABOUT") {
+	else if (currPage == ABOUT_PAGE) {
 		console.log(heroSectionX);
 		if (heroSectionX > -70) {
 			navToHome();
@@ -185,19 +142,19 @@ function checkStick() {
 function navToWorks() {
 	$('.nav-item').css({'border-bottom' : 'none'});
 	workButton.css({'border-bottom' : '2px solid white'});
-	goToWorks();
+	goTo(WORKS_PAGE);
 }
 
 function navToHome() {
 	$('.nav-item').css({'border-bottom' : 'none'});
 	homeButton.css({'border-bottom' : '2px solid white'});
-	goToHome();	
+	goTo(HOME_PAGE);
 }
 
 function navToAbout() {
 	$('.nav-item').css({'border-bottom' : 'none'});
 	aboutButton.css({'border-bottom' : '2px solid white'});
-	goToAbout();
+	goTo(ABOUT_PAGE);
 }
 
 function navMouseUp(e) {
