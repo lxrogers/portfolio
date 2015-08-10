@@ -6,7 +6,7 @@
 	var colors = [ "#F27979", "#FFD6D6", "#B31717", "#E6FFFF", "#DA95ED", "#95EDC9"];
 	var heartColors = [ "#F27979", "#FFD6D6", "#B31717" ];
 	var circleColors = [ "#E6FFFF", "#DA95ED", "#95EDC9" ]
-	var SEED_SIZE = 30;
+	var SEED_SIZE = 10;
 	var FLICKER_RATE = .06;
 
 	//ENVIRONMENT PARAMS
@@ -31,7 +31,8 @@
 		y : 0
 	};
 
-	navAnimationX = 0;
+	var scrollYPos = $(window).scrollTop();
+	var scrollYDrawn = false;
 
 	var particles;
 	var context;
@@ -45,6 +46,8 @@
 		window.addEventListener("touchstart", touchStart, false);
 		window.addEventListener("touchmove", touchMove, false);
 		window.addEventListener("touchend", touchEnd, false);
+
+		$(window).scroll(scrollY);
 		ResizeCanvas();
 		
 		setInterval(TimeUpdate, 27);
@@ -72,22 +75,7 @@
 	function TimeUpdate(e) {
 		eraseParticles();
 
-		//animate from mouse
-		if (mouseDown && originMouse.drawn == false) {
-			var dx = originMouse.x - mouse.x;
-			slideParticles(dx);
-			originMouse.x = mouse.x;
-		}
-
-		//animate from nav animations
-		if (heroSection.is(':animated')) {
-			var currX = parseFloat(heroSection.css('left'))
-			var dx =  currX - navAnimationX;
-			slideParticles(-1 * dx);
-			navAnimationX = currX;
-		} else {
-			navAnimationX = parseFloat(heroSection.css('left'));
-		}
+		parallaxParticles();
 
 		for ( var i = 0; i < curr_particles; i++) {
 			particle = particles[i];
@@ -156,9 +144,10 @@
 	}
 
 	//slide the particles in pixels
-	function slideParticles(dx) {
+	function slideParticles(dx, dy) {
 		for (var i = 0; i < curr_particles; i++) {
 			particles[i].originX -= dx * particles[i].currentSize / SEED_SIZE;
+			particles[i].originY -= dy * particles[i].currentSize / SEED_SIZE;
 		}
 	}
 
@@ -189,6 +178,28 @@
 			count = 0;
 		}
 	}
+	<!-- Parallax Particles -->
+	function scrollY() {
+		var scrollYPos = $(window).scrollTop();
+	}
+
+	function parallaxParticles() {
+		//x
+		if (originMouse.drawn == false) {
+			var dx = originMouse.x - mouse.x;
+			slideParticles(dx, 0);
+			originMouse.x = mouse.x;
+		}
+		//y
+		if (scrollYDrawn == false) {
+			var curr = $(window).scrollTop();
+			var dy = curr - scrollYPos;
+			slideParticles(0, dy);
+			scrollYPos = curr;
+		}
+
+	}
+
 
 	<!-- MOUSE EVENTS -->
 

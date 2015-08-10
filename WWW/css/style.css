@@ -1,7 +1,6 @@
 html, body {
 	height: 100%;
-	overflow-x: hidden;
-	overflow-y: hidden;
+	background-color: #DDD;
 }
 
 a {
@@ -18,15 +17,12 @@ a:hover {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .section {
   	text-align: center;
-  	position: relative;
-	left: 0%;
-	-webkit-touch-callout: none;
+  	position: relative;	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	overflow: hidden;
 }
 
 .section-heading,
@@ -53,6 +49,33 @@ a:hover {
 .center {
 	text-align: center;
 }
+
+
+.section.splash {
+	height: 100%;
+}
+
+.parallax {
+	margin-top: 200;
+}
+
+/* SPLASH
+-------------------------------------------------- */
+#name {
+	margin-top: 30%;
+	color: white;
+	margin-bottom: 20px;
+	font-size: 5em;
+}
+
+#hint {
+	position: absolute;
+	top: 90%;
+	color: white;
+	width: 100%;
+	text-align: center;
+}
+
 /* Nav
 -------------------------------------------------- */
 #designer {
@@ -65,6 +88,7 @@ a:hover {
 
 #nav {
 	font-weight: 400;
+	height: 20%;
 	color: white;
 }
 
@@ -73,34 +97,14 @@ a:hover {
 	margin-bottom: 5%;
 }
 
-#name {
-	margin-top: 5%;
-	color: white;
-	margin-bottom: 20px;
-}
-
-.scroll-wrapper {
-	position: relative;
-	height: 100%;
-	width: 100%;
-	padding-right: 20px;
-	overflow: auto;
-}
-
-.spacer {
-	height: 500px;
-}
 /* About
 -------------------------------------------------- */
 .about {
-	position: relative;
 	width: 100%;
-	color: white;
-	top: -90%;
 	height: 100%;
-	left: 100%;
+	padding-top: 20%;
+	color: black;
 	text-align: left;
-	overflow: hidden;
 }
 
 .about img {
@@ -110,13 +114,8 @@ a:hover {
 -------------------------------------------------- */
 .works {
 	color: white;
-	position: relative;
-	top: 5%;
-	left: -100%;
 	text-align: center;
-	height: 70%;
 	width: 100%;
-	overflow: hidden;
 }
 
 .work {
@@ -171,11 +170,11 @@ a:hover {
 /* Hero
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .hero {
-	top: -70%;
+	height: 80%;
 }
 
 #canvas {
-	position:absolute;
+	position: absolute;
 	top: 0;
 	left: 0;
   	width: 100%; 
