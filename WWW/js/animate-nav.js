@@ -1,16 +1,22 @@
-var workButton = $('#work');
-var homeButton = $('#home');
 var aboutButton = $('#about');
+var resumeButton = $('#resume');
+var workButton = $('#work');
+var contactButton = $('#contact');
 
+
+aboutButton.hover(function(event) {highlight(event.currentTarget);},
+									function(event) {unhighlightAll();});
+
+resumeButton.hover(function(event) {highlight(event.currentTarget);},
+									function(event) {unhighlightAll();});
 
 workButton.hover(function(event) {highlight(event.currentTarget);},
 									function(event) {unhighlightAll();});
 
-homeButton.hover(function(event) {highlight(event.currentTarget);	},
+contactButton.hover(function(event) {highlight(event.currentTarget);	},
 									function(event) {unhighlightAll();});
 
-aboutButton.hover(function(event) {highlight(event.currentTarget);},
-									function(event) {unhighlightAll();});
+
 
 
 function highlight(target) {
@@ -28,8 +34,9 @@ function unhighlightAll() {
 function highlightAll() {
 	$('.nav-item').stop();
 	if (workButton.css('color') == 'rgb(128, 128, 128)' 
-		&& homeButton.css('color') == 'rgb(128, 128, 128)' 
-		&& aboutButton.css('color') == 'rgb(128, 128, 128)') {
+		&& resumeButton.css('color') == 'rgb(128, 128, 128)' 
+		&& aboutButton.css('color') == 'rgb(128, 128, 128)'
+		&& contactButton.css('color') == 'rgb(128, 128, 128)' ) {
 			$('.nav-item').css('color', 'white');
 	}
 }

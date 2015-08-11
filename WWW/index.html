@@ -36,25 +36,47 @@
 	<div id="canvas" >
 		<canvas id="projector" width="100%" height="100%" >Your browser does not support the Canvas element.</canvas>
 		<div class="filter"></div>
-		<div id="hint" class="one column">
-					scroll down
+		<div id="hint" class="twelve columns">scroll down</div>
+
+		<div id="controls">
+			<div id="scatter" class="control"> scatter </div>
+			<div id="circle" class="control"> circle </div>
+			<div id="heart" class="control"> heart </div>
 		</div>
+
 	</div>
 	<div class="section splash">
 		<div class="container">
 			<div class="row">
 				<div id="name" class="twelve columns">	Lawrence X. Rogers	</div>
 			</div>
+			<div class="row">
+				<div id="nav">
+					<div class="one column offset-by-three"><div id="about" class="nav-item"><a href="#">About</a></div></div>
+					<div class="one column offset-by-one"><div id="resume" class="nav-item"><a href="#">Resume</a></div></div>
+					<div class="one column offset-by-one"><div id="work" class="nav-item"><a href="#">Work</a></div></div>
+					<div class="one column offset-by-one"><div id="contact" class="nav-item"><a href="#">Contact</a></div></div>
+				</div>
+			</div>
 		</div>
 	</div>
-
+	
 	<div id="about_section" class="section about"> 
 		<div class="container">
 			<div class="parallax">
 				<div class="row">
-					<div class="four columns">
+					<div class="five columns">
 						<h1>About</h1>
-						I'll be graduating from Stanford with a B.S. in product design and a M.S. in Computer Science. I love the intersection of design & engineering.
+						Next year I will graduate from Stanford University with a B.S. in Product Design and a M.S. in Computer Science. <br/>
+						
+						I'm searching for: <br/>
+						 PM jobs tech companies with impossible challenges
+						 Design firms 
+					</div>
+					<div id="catchphrase" class="one-half column offset-by-four">
+						<h1> Design. </h1>
+						<h1> Engineering. </h1>
+						<h1> Innovation. </h1>
 					</div>
 				</div>
 			</div>
@@ -65,8 +87,7 @@
 		<div class="container">
 			<div class="parallax">
 				<div class="row">
-					<div class="nine columns"> .</div>
-					<div class="three columns"><h1>Resume</h1></div>
+					<div class="three columns offset-by-nine"><h1>Resume</h1></div>
 				</div>
 				<div class="row">
 					<div class="four columns">
@@ -148,30 +169,19 @@
 						lawrence.x.rogers@gmail.com
 					</div>
 					<div class="three columns">
-
+						<a href="lxrogers.wordpress.com">lxrogers.wordpress.com</a>
+					</div>
+					<div class="three columns">
+						lxrogers.wordpress.com
+					</div>
+					<div class="three columns">
+						lxrogers.wordpress.com
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!--
-	<div class="section nav">
-		<div class="container">
-			<div class="row">
-				
-			</div>
-			<div class="row">
-				<div id="nav">
-					<div class="one column offset-by-four"><div id="work" class="nav-item"><a href="#">Work</a></div></div>
-					<div class="one column offset-by-one"><div id="home" class="nav-item"><a href="#">Home</a></div></div>
-					<div class="one column offset-by-one"><div id="about" class="nav-item"><a href="#">About</a></div></div>
-				</div>
-
-			</div>
-		</div>
-	</div>
--->
 <!--
 	<div class="section hero">	
 		<div class="container">
@@ -194,6 +204,7 @@
 	<script src="js/parallax.js"></script>
 	<script src="js/particles.js"></script>
 	<script src="js/animate-splash.js"></script>
+	<script src="js/animate-nav.js"></script>
 	<script src="js/works.js"></script>
 
 <!-- End Document

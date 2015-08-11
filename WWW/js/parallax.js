@@ -22,6 +22,7 @@ function fadeName() {
 
 	if (offset < 1 && offset > -.2) {
 		name.css('opacity', (offset * 3));
+		$('#nav').css('opacity', (offset * 3));
 	}
 }
 
@@ -38,20 +39,9 @@ function applyParallax(parentTag) {
 	var parent = $(parentTag);
 	var offset = getOffsetPercentage(parent);
 
-	if (offset < 1.2 && offset > -.2) {
+	if (offset < 1.2) {
 		var child = $(parentTag + ' .parallax');
 		child.css('margin-top', offset * PARALLAX_AMOUNT);
-	}
-}
-
-function parallaxAbout() {
-	var about = $('.about');
-	var offset = getOffsetPercentage(about);
-
-
-	if (offset < 1.2 && offset > -.2) {
-		$('.about .parallax').css('margin-top', offset * PARALLAX_AMOUNT);
-
 	}
 }
 

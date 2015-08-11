@@ -3,7 +3,7 @@
 //----------------------------------------
 function animateIntro() {
 	var delayTime = 1200;
-	var initTime = 200;
+	var initTime = -500;
 	
 	setTimeout(function() {
 		Heart(canvas.width/2, canvas.height * 2/5);
@@ -19,3 +19,15 @@ function animateIntro() {
 }
 
 animateIntro();
+
+$('#heart').click(function(e) {
+	Heart(canvas.width/2, canvas.height * 2/5);
+});
+
+$('#circle').click(function(e) {
+	Circle(canvas.width/2, canvas.height/2);
+});
+
+$('#scatter').click(function(e) {
+	Scatter();
+});
