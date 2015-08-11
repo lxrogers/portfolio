@@ -51,6 +51,22 @@ function unHoverWork() {
 	$(this).find(".bottom").delay(delayTime*2).fadeTo(200, 1);
 }
 
+function clickWork() {
+	$(this).animate(
+		{height: '100%'},
+		1000,
+		"easeOutExpo"
+	);
+}
+
+
 $(".work").each(function() {
 	$(this).hover(hoverWork, unHoverWork);
 });
+
+$('.work').each(function() {
+	$(this).click(clickWork);
+});
+
+
+

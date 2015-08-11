@@ -156,23 +156,13 @@ a:hover {
 	text-align: center;
 	width: 100%;
 	height: 100%;
-}
 
-.works .container {
-	width: 100%;
-	max-width: 100%;
-	height: 100%;
-	margin: 0;
-}
-
-.works .row {
-	height: 60%;
 }
 
 .work {
 	position: relative;
 	width: 100%;
-	height: 100%;
+	height: 60%;
 	overflow: hidden;
 	text-align: left;
 	background-color: black;
@@ -182,6 +172,7 @@ a:hover {
 	position: absolute;
 	z-index: 100;
 	width: 100%;
+	height: 100%;
 	overflow: hidden;
 }
 
