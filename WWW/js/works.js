@@ -1,4 +1,4 @@
-
+/*
 function resizeWorks() {
 	var height = $(".work").width() * .7;
 	$(".work").each(function() {
@@ -8,6 +8,8 @@ function resizeWorks() {
 resizeWorks();
 
 $(window).resize(resizeWorks);
+*/
+
 var zoomTime = 700;
 var delayTime = 100;
 

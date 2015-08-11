@@ -20,19 +20,17 @@
 	//particle sliding variables
 	var mouseDown = false;
 
-	var originMouse = {
-		x : 0,
-		y : 0,
-		drawn : false
-	};
+	var particleParallax = {
+		dx : 0,
+		scrollY : 0,
+		dy : 0, 
+		intertiaY : 0
+	}
 	
 	var mouse = {
 		x : 0,
 		y : 0
 	};
-
-	var scrollYPos = $(window).scrollTop();
-	var scrollYDrawn = false;
 
 	var particles;
 	var context;
@@ -46,8 +44,7 @@
 		window.addEventListener("touchstart", touchStart, false);
 		window.addEventListener("touchmove", touchMove, false);
 		window.addEventListener("touchend", touchEnd, false);
-
-		$(window).scroll(scrollY);
+		$(window).scroll(scroll);
 		ResizeCanvas();
 		
 		setInterval(TimeUpdate, 27);
@@ -179,40 +176,32 @@
 		}
 	}
 	<!-- Parallax Particles -->
-	function scrollY() {
-		var scrollYPos = $(window).scrollTop();
-	}
-
 	function parallaxParticles() {
-		//x
-		if (originMouse.drawn == false) {
-			var dx = originMouse.x - mouse.x;
-			slideParticles(dx, 0);
-			originMouse.x = mouse.x;
-		}
+		slideParticles(particleParallax.dx, 0);
+		particleParallax.dx *= .88;
 		//y
-		if (scrollYDrawn == false) {
-			var curr = $(window).scrollTop();
-			var dy = curr - scrollYPos;
-			slideParticles(0, dy);
-			scrollYPos = curr;
-		}
-
+		slideParticles(0, particleParallax.dy);
+		particleParallax.dy *= .88
 	}
 
+	function scroll(e) {
+		particleParallax.dy = $(window).scrollTop() - particleParallax.scrollY;
+		particleParallax.scrollY = $(window).scrollTop();
+
+	}
 
 	<!-- MOUSE EVENTS -->
 
 	function MouseMove(e) {
+		particleParallax.dx = mouse.x - e.pageX;
 		mouse.x = e.pageX;
 		mouse.y = e.pageY;
+
+
 	}
 
 	function MouseDown(e) {
-		mouseDown = true;
-		originMouse.x = e.pageX;
-		originMouse.y = e.pageY;
-	}
+		mouseDown = true;	}
 
 	function MouseUp(e) {
 		mouseDown = false;

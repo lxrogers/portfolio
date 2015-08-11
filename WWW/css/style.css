@@ -50,17 +50,25 @@ a:hover {
 	text-align: center;
 }
 
-
-.section.splash {
-	height: 100%;
-}
-
 .parallax {
 	margin-top: 200;
 }
 
 /* SPLASH
 -------------------------------------------------- */
+.section.splash {
+	height: 100%;
+}
+
+#canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+  	width: 100%; 
+  	height: 100%;
+  	opacity: 1;
+}
+
 #name {
 	margin-top: 30%;
 	color: white;
@@ -97,6 +105,25 @@ a:hover {
 	margin-bottom: 5%;
 }
 
+/* RESUME
+------------------------------------------------- */
+.resume {
+	height: 100%;
+	text-align: left;
+}
+
+.resume h5 {
+	margin-bottom: 0;
+}
+
+.resume .tagline {
+	font-weight: 800;
+}
+
+.resume .row {
+	margin-top: 10%;
+}
+
 /* About
 -------------------------------------------------- */
 .about {
@@ -110,21 +137,35 @@ a:hover {
 .about img {
 	width: 100%;
 }
+
 /* Work
 -------------------------------------------------- */
+
 .works {
 	color: white;
 	text-align: center;
 	width: 100%;
+	height: 100%;
+}
+
+.works .container {
+	width: 100%;
+	max-width: 100%;
+	height: 100%;
+	margin: 0;
+}
+
+.works .row {
+	height: 60%;
 }
 
 .work {
 	position: relative;
 	width: 100%;
+	height: 100%;
 	overflow: hidden;
 	text-align: left;
 	background-color: black;
-	margin-bottom: 8%;
 }
 
 .work .bottom {
@@ -147,6 +188,7 @@ a:hover {
 	width: 100%;
 
 }
+
 .work .overlay h1 {
 	position: absolute;
 	opacity: 0;
@@ -166,6 +208,13 @@ a:hover {
 	top: 30%;
 	width: 100%;
 }
+/* Contact
+-------------------------------------------------- */
+.contact {
+	height: 100%;
+	padding-top: 40%;
+}
+
 
 /* Hero
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -173,14 +222,7 @@ a:hover {
 	height: 80%;
 }
 
-#canvas {
-	position: absolute;
-	top: 0;
-	left: 0;
-  	width: 100%; 
-  	height: 100%;
-  	opacity: 1;
-}
+
 
 .hero .container {
 }

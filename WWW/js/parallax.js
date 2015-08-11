@@ -1,7 +1,7 @@
 var PARALLAX_AMOUNT = 200;
 
 //LIST OF ELEMENTS CONTAINING A PARALLAX CHILD
-var parallaxElements = ['.about'];
+var parallaxElements = ['.about', '.resume', '.contact'];
 
 $(window).scroll(parallax);
 
