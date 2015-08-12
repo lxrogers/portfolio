@@ -18,9 +18,9 @@ function parallax(e) {
 //specific parallax functions
 function fadeName() {
 	var splashOffset = getOffsetPercentage($('.splash'));
-	var newOffset = (splashOffset + 1) * 3 - 2.1;
-
-	if (newOffset < 1) {
+	var newOffset = (splashOffset + 1) * 3 - 2;
+	
+	if (splashOffset > -1) {
 		$('#name').css('opacity', newOffset);
 		$('#nav').css('opacity', newOffset);
 	}
@@ -39,7 +39,7 @@ function applyParallax(parentTag) {
 	var parent = $(parentTag);
 	var offset = getOffsetPercentage(parent);
 	
-	var opacity = 1- offset;
+	var opacity = 1 - offset;
 	
 	if (offset < 1.2) {
 		var child = $(parentTag + ' .parallax');

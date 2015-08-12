@@ -181,7 +181,7 @@
 		particleParallax.dx *= .88;
 		//y
 		slideParticles(0, particleParallax.dy);
-		particleParallax.dy *= .88
+		particleParallax.dy *= .7;
 	}
 
 	function scroll(e) {
