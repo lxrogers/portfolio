@@ -17,19 +17,19 @@ function parallax(e) {
 
 //specific parallax functions
 function fadeName() {
-	var name = $('#name');
-	var offset = getOffsetPercentage(name);
+	var splashOffset = getOffsetPercentage($('.splash'));
+	var newOffset = (splashOffset + 1) * 3 - 2.1;
 
-	if (offset < 1 && offset > -.2) {
-		name.css('opacity', (offset * 3));
-		$('#nav').css('opacity', (offset * 3));
+	if (newOffset < 1) {
+		$('#name').css('opacity', newOffset);
+		$('#nav').css('opacity', newOffset);
 	}
 }
 
 function fadeHint() {
 	var hint = $('#hint');
 	var offset = getOffsetPercentage(hint);
-
+	
 	if (offset < 1 && offset > -.2) {
 		hint.css('opacity', (offset));
 	}
@@ -48,7 +48,7 @@ function applyParallax(parentTag) {
 function getOffsetPercentage(e) {
 	var eTop = e.offset().top;
 	var offset = eTop - $(window).scrollTop();
-	return offset / window.screen.height;
+	return offset / $(window).height();
 }
 
 parallax();

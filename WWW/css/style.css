@@ -68,11 +68,6 @@ h1 {
 
 /* SPLASH
 -------------------------------------------------- */
-.section.splash {
-	height: 100%;
-	color: white;
-}
-
 #canvas {
 	position: absolute;
 	top: 0;
@@ -82,19 +77,9 @@ h1 {
   	opacity: 1;
 }
 
-#name {
-	margin-top: 30%;
+.section.splash {
+	height: 100%;
 	color: white;
-	margin-bottom: 20px;
-
-}
-
-#hint {
-	position: absolute;
-	top: 90%;
-	color: white;
-	width: 100%;
-	text-align: center;
 }
 
 #controls {
@@ -109,16 +94,41 @@ h1 {
 	height: 50px;
 	float: right;
 }
-/* Nav
--------------------------------------------------- */
+
+#name {
+	position: absolute;
+	width: 100%;
+	top: 40%;
+	text-align: center;
+	color: white;
+	margin-bottom: 20px;
+}
+
 #nav {
-	height: 20%;
+	position: absolute;
+	top: 50%;
+	text-align: center;
+	width: 100%;
+	color: white;
+	z-index: 999;
 }
 
 .nav-item {
 	transition: color .5s;
 	margin-bottom: 5%;
 }
+
+#hint {
+	position: absolute;
+	top: 90%;
+	color: white;
+	width: 100%;
+	text-align: center;
+}
+
+
+
+
 
 /* About
 -------------------------------------------------- */
