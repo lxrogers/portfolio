@@ -2,7 +2,9 @@ html, body {
 	height: 100%;
 	background-color: #EEE;
 	background: url(../img/SimpleDesktops.png) repeat rgba(0,0,0,.9);
-
+  	font-weight: 300;
+	font-family: 'Open Sans', sans-serif;
+  	color: #222;
 }
 
 a {
@@ -13,6 +15,14 @@ a {
 a:hover {
 	text-decoration: none;
 	color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+	letter-spacing: 2rem;
 }
 
 /* Sections
@@ -60,6 +70,7 @@ a:hover {
 -------------------------------------------------- */
 .section.splash {
 	height: 100%;
+	color: white;
 }
 
 #canvas {
@@ -75,7 +86,7 @@ a:hover {
 	margin-top: 30%;
 	color: white;
 	margin-bottom: 20px;
-	font-size: 5em;
+
 }
 
 #hint {
@@ -101,33 +112,12 @@ a:hover {
 /* Nav
 -------------------------------------------------- */
 #nav {
-	font-weight: 400;
 	height: 20%;
-	color: white;
 }
 
 .nav-item {
 	transition: color .5s;
 	margin-bottom: 5%;
-}
-
-/* RESUME
-------------------------------------------------- */
-.resume {
-	height: 100%;
-	text-align: left;
-}
-
-.resume h5 {
-	margin-bottom: 0;
-}
-
-.resume .tagline {
-	font-weight: 800;
-}
-
-.resume .row {
-	padding-top: 10%;
 }
 
 /* About
@@ -140,12 +130,47 @@ a:hover {
 	text-align: left;
 }
 
+.about p {
+	color: #666;
+}
+
 .about img {
 	width: 100%;
 }
 
 #catchphrase {
 	padding-top: 30%;
+}
+
+/* RESUME
+------------------------------------------------- */
+.resume {
+	height: 100%;
+	text-align: left;
+	color: #666;
+}
+
+.resume h1 {
+	text-align: right;
+	color: #222;
+}
+
+.resume h5, h6 {
+	margin-bottom: 0;
+	color: #000;
+}
+
+.resume .title {
+	font-family: 'Open Sans', sans-serif;
+	letter-spacing: .3rem;
+}
+
+.resume .tagline {
+	font-weight: 800;
+}
+
+.resume .row {
+	padding-top: 5%;
 }
 
 /* Work
@@ -193,7 +218,6 @@ a:hover {
 .work .overlay h1 {
 	position: absolute;
 	opacity: 0;
-	font-size: 3.5em;
 	bottom: 70%;
 	left: 5%;
 	margin: auto;

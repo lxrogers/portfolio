@@ -23,7 +23,7 @@
 	var particleParallax = {
 		dx : 0,
 		scrollY : 0,
-		dy : 0, 
+		dy : -50, 
 		intertiaY : 0
 	}
 	
