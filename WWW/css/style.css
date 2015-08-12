@@ -1,10 +1,9 @@
 html, body {
-	height: 100%;
 	background-color: #EEE;
   	font-weight: 300;
 	font-family: 'Open Sans', sans-serif;
   	color: #222;
-
+  	height: 100%;
 }
 
 a {
@@ -21,25 +20,14 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: 'Montserrat', sans-serif;
 }
 
-h1 {
-	letter-spacing: 2rem;
-}
-
 /* Sections
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .section {
   	text-align: center;
-  	position: relative;	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-
-.section-heading,
-.section-description {
-  	margin-bottom: 1.2rem;
+  	height: 100%;
+  	padding: 8rem 0 7rem;
+  	-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none;
+	-moz-user-select: none; -ms-user-select: none; user-select: none;
 }
 
 /* Shared
@@ -54,6 +42,7 @@ h1 {
   	opacity: .7;
 	background: url(../img/diagonals.png) repeat rgba(0,0,0,.6);
 }
+
 .black {
 	background-color: rgba(0,0,0,.6);
 }
@@ -66,8 +55,8 @@ h1 {
 	margin-top: 200;
 }
 
-/* SPLASH
--------------------------------------------------- */
+/* CANVAS
+------------------------------------------------- */
 #canvas {
 	position: absolute;
 	top: 0;
@@ -75,11 +64,6 @@ h1 {
   	width: 100%; 
   	height: 100%;
   	opacity: 1;
-}
-
-.section.splash {
-	height: 100%;
-	color: white;
 }
 
 #controls {
@@ -90,27 +74,17 @@ h1 {
 }
 
 .control {
-	width: 50px;
-	height: 50px;
-	float: right;
+	width: 50px; height: 50px; float: right;
+}
+
+/* SPLASH
+-------------------------------------------------- */
+.splash {
+	color: white;
 }
 
 #name {
-	position: absolute;
-	width: 100%;
-	top: 40%;
-	text-align: center;
-	color: white;
-	margin-bottom: 20px;
-}
-
-#nav {
-	position: absolute;
-	top: 60%;
-	text-align: center;
-	width: 100%;
-	color: white;
-	z-index: 999;
+	padding-top: 8rem;
 }
 
 .nav-item {
@@ -129,22 +103,16 @@ h1 {
 /* About
 -------------------------------------------------- */
 .about {
-	width: 100%;
-	height: 100%;
 	color: black;
 	text-align: left;
-	background: url(../img/SimpleDesktops.png);
-	background-size: cover;
-	
+	background: url(../img/SimpleDesktops.png) no-repeat; 
+  	background-size: cover;
+
 }
 
 .about p {
 	color: #666;
 	letter-spacing: 0rem;
-}
-
-.about img {
-	width: 100%;
 }
 
 #catchphrase {
@@ -255,4 +223,32 @@ h1 {
 
 .contact a {
 	text-decoration: underline;
+}
+
+@media (min-width: 550) {
+	h1 {
+		font-size: 3rem;
+	}
+	#name {
+		padding-top: 20rem;
+	}
+}
+
+@media (min-width: 750px) {
+	h1 {
+		letter-space: 1rem;
+	}
+	#name {
+		padding-top: 20rem;
+	}
+}
+
+@media (min-width: 1000px) {
+	h1 {
+		font-size: 5rem;
+		letter-spacing: 2rem;
+	}
+	#name {
+		padding-top: 30rem;
+	}
 }

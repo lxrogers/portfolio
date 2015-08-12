@@ -1,13 +1,13 @@
 var PARALLAX_AMOUNT = 500;
 
 //LIST OF ELEMENTS CONTAINING A PARALLAX CHILD
-var parallaxElements = ['.about', '.resume', '.contact'];
+var parallaxElements = ['.about'];//, '.resume', '.contact'];
 
 $(window).scroll(parallax);
 
 function parallax(e) {
-	fadeName();
-	fadeHint();
+	//fadeName();
+	//fadeHint();
 
 	for (var i = 0; i < parallaxElements.length; i++) {
 		applyParallax(parallaxElements[i]);
