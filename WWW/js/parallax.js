@@ -1,4 +1,4 @@
-var PARALLAX_AMOUNT = 200;
+var PARALLAX_AMOUNT = 500;
 
 //LIST OF ELEMENTS CONTAINING A PARALLAX CHILD
 var parallaxElements = ['.about', '.resume', '.contact'];
@@ -38,10 +38,14 @@ function fadeHint() {
 function applyParallax(parentTag) {
 	var parent = $(parentTag);
 	var offset = getOffsetPercentage(parent);
-
+	
+	var opacity = 1- offset;
+	
 	if (offset < 1.2) {
 		var child = $(parentTag + ' .parallax');
 		child.css('margin-top', offset * PARALLAX_AMOUNT);
+		child.css('opacity', opacity);
+
 	}
 }
 

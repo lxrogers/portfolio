@@ -185,8 +185,9 @@
 	}
 
 	function scroll(e) {
-		particleParallax.dy = $(window).scrollTop() - particleParallax.scrollY;
-		particleParallax.scrollY = $(window).scrollTop();
+		var curr = $(window).scrollTop();
+		particleParallax.dy =  curr- particleParallax.scrollY;
+		particleParallax.scrollY = curr;
 
 	}
 
@@ -196,8 +197,6 @@
 		particleParallax.dx = mouse.x - e.pageX;
 		mouse.x = e.pageX;
 		mouse.y = e.pageY;
-
-
 	}
 
 	function MouseDown(e) {

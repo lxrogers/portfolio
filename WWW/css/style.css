@@ -5,6 +5,7 @@ html, body {
   	font-weight: 300;
 	font-family: 'Open Sans', sans-serif;
   	color: #222;
+
 }
 
 a {
@@ -110,7 +111,6 @@ h1 {
 	text-align: center;
 	width: 100%;
 	color: white;
-	z-index: 999;
 }
 
 .nav-item {
@@ -126,10 +126,6 @@ h1 {
 	text-align: center;
 }
 
-
-
-
-
 /* About
 -------------------------------------------------- */
 .about {
@@ -142,6 +138,7 @@ h1 {
 
 .about p {
 	color: #666;
+	letter-spacing: 0rem;
 }
 
 .about img {
