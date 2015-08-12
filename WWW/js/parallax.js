@@ -6,8 +6,8 @@ var parallaxElements = ['.about'];//, '.resume', '.contact'];
 $(window).scroll(parallax);
 
 function parallax(e) {
-	//fadeName();
-	//fadeHint();
+	fadeName();
+	fadeHint();
 
 	for (var i = 0; i < parallaxElements.length; i++) {
 		applyParallax(parallaxElements[i]);
