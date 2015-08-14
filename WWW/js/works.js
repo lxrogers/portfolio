@@ -70,18 +70,22 @@ function worksParallax() {
 	$(".work").each(function() {
 		var offset = getOffsetPercentage($(this));
 
-		if (offset <= .5 && offset >= -.3) {
+		var img = $(this).find(".bottom").find("img");
+		img.css("margin-top", -50 * offset + "px");
+
+		if (offset <= .5 && offset >= -.2) {
 			if (!$(this).hasClass('highlighted')) {
 				hightlightWork($(this));
 			}
 
 			var header = $(this).find(".overlay").find(HEADER_CLASS);
 			var subtitle = $(this).find(".overlay").find(SUBTITLE_CLASS);
-
+			
 			header.css('bottom', HEADER_BASE_BOTTOM - WORKS_PARALLAX_AMOUNT * offset + "%");
 			subtitle.css('top', SUBTITLE_BASE_TOP + WORKS_PARALLAX_AMOUNT * offset + "%");
 		}
-		else if ((offset > .5 || offset < -.3) && $(this).hasClass('highlighted')) {
+
+		else if ((offset > .5 || offset < -.2) && $(this).hasClass('highlighted')) {
 			console.log("unHighlightWork")
 			unHighlightWork($(this));
 		}
