@@ -9,32 +9,37 @@ resizeWorks();
 
 $(window).resize(resizeWorks);
 */
+var HEADER_CLASS = "h2";
+var SUBTITLE_CLASS = "h6";
 
 var zoomTime = 700;
 var delayTime = 100;
+
+var HEADER_FONT_SIZE = '2.5em';
+var SUBTITLE_FONT_SIZE = '1em';
 
 function hoverWork() {
 	$(".work").stop();
 	$(this).find(".bottom").fadeTo(100, .5);
 
-	var h1 = $(this).find(".overlay").find("h1");
-	var h2 = $(this).find(".overlay").find("h2");
+	var h1 = $(this).find(".overlay").find(HEADER_CLASS);
+	var h2 = $(this).find(".overlay").find(SUBTITLE_CLASS);
 	h1.stop();
 	h2.stop();
 	
 	h1.delay(delayTime).animate(
-		{fontSize: '4em', opacity: 1,},
+		{fontSize: HEADER_FONT_SIZE, opacity: 1,},
 		zoomTime,
 		"easeOutExpo");
 	h2.delay(delayTime*2).animate(
-		{fontSize: '1.5em', opacity: 1},
+		{fontSize: SUBTITLE_FONT_SIZE, opacity: 1},
 		zoomTime,
 		"easeOutExpo");
 }
 
 function unHoverWork() {
-	var h1 = $(this).find(".overlay").find("h1");
-	var h2 = $(this).find(".overlay").find("h2");
+	var h1 = $(this).find(".overlay").find(HEADER_CLASS);
+	var h2 = $(this).find(".overlay").find(SUBTITLE_CLASS);
 	h1.stop();
 	h2.stop();
 
