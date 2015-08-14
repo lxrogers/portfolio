@@ -1,59 +1,61 @@
-/*
-function resizeWorks() {
-	var height = $(".work").width() * .7;
-	$(".work").each(function() {
-		$(this).height(height);
-	});	
-};
-resizeWorks();
-
-$(window).resize(resizeWorks);
-*/
 var HEADER_CLASS = "h2";
 var SUBTITLE_CLASS = "h6";
 
 var zoomTime = 700;
 var delayTime = 100;
+var SUBTITLE_DELAY = 150;
 
-var HEADER_FONT_SIZE = '2.5em';
-var SUBTITLE_FONT_SIZE = '1em';
+var HEADER_FONT_SIZE_END = '2.5em';
+var SUBTITLE_FONT_SIZE_END = '1em';
 
-function hoverWork() {
+var HEADER_FONT_SIZE_BEGIN = '3em';
+var SUBTITLE_FONT_SIZE_BEGIN = '1.3em';
+
+var HEADER_BASE_BOTTOM = 70;
+var SUBTITLE_BASE_TOP = 30;
+
+var WORKS_PARALLAX_AMOUNT = 75;
+var scroll_counter = 0;
+
+function hightlightWork(work) {
 	$(".work").stop();
-	$(this).find(".bottom").fadeTo(100, .5);
+	work.find(".bottom").fadeTo(100, .5);
 
-	var h1 = $(this).find(".overlay").find(HEADER_CLASS);
-	var h2 = $(this).find(".overlay").find(SUBTITLE_CLASS);
-	h1.stop();
-	h2.stop();
+	var header = work.find(".overlay").find(HEADER_CLASS);
+	var subtitle = work.find(".overlay").find(SUBTITLE_CLASS);
+	header.stop();
+	subtitle.stop();
 	
-	h1.delay(delayTime).animate(
-		{fontSize: HEADER_FONT_SIZE, opacity: 1,},
+	header.delay(delayTime).animate(
+		{fontSize: HEADER_FONT_SIZE_END, opacity: 1,},
 		zoomTime,
 		"easeOutExpo");
-	h2.delay(delayTime*2).animate(
-		{fontSize: SUBTITLE_FONT_SIZE, opacity: 1},
+	subtitle.delay(delayTime + SUBTITLE_DELAY).animate(
+		{fontSize: SUBTITLE_FONT_SIZE_END, opacity: 1},
 		zoomTime,
 		"easeOutExpo");
+
+	work.addClass("highlighted");
 }
 
-function unHoverWork() {
-	var h1 = $(this).find(".overlay").find(HEADER_CLASS);
-	var h2 = $(this).find(".overlay").find(SUBTITLE_CLASS);
-	h1.stop();
-	h2.stop();
+function unHighlightWork(work) {
+	var header = work.find(".overlay").find(HEADER_CLASS);
+	var subtitle = work.find(".overlay").find(SUBTITLE_CLASS);
+	header.stop();
+	subtitle.stop();
 
-	h1.delay(delayTime).animate(
-		{fontSize: '3.5em', opacity: 0},
+	header.delay(delayTime).animate(
+		{fontSize: HEADER_FONT_SIZE_BEGIN, opacity: 0},
 		zoomTime,
 		"easeOutExpo");
-	h2.animate(
-		{fontSize: '1.25em', opacity: 0},
+	subtitle.animate(
+		{fontSize: SUBTITLE_FONT_SIZE_BEGIN, opacity: 0},
 		zoomTime,
 		"easeOutExpo");
 	
 	
-	$(this).find(".bottom").delay(delayTime*2).fadeTo(200, 1);
+	work.find(".bottom").delay(delayTime*2).fadeTo(200, 1);
+	work.removeClass("highlighted");
 }
 
 function clickWork() {
@@ -64,14 +66,35 @@ function clickWork() {
 	);
 }
 
+function worksParallax() {
+	$(".work").each(function() {
+		var offset = getOffsetPercentage($(this));
+
+		if (offset <= .5 && offset >= -.3) {
+			if (!$(this).hasClass('highlighted')) {
+				hightlightWork($(this));
+			}
+
+			var header = $(this).find(".overlay").find(HEADER_CLASS);
+			var subtitle = $(this).find(".overlay").find(SUBTITLE_CLASS);
+
+			header.css('bottom', HEADER_BASE_BOTTOM - WORKS_PARALLAX_AMOUNT * offset + "%");
+			subtitle.css('top', SUBTITLE_BASE_TOP + WORKS_PARALLAX_AMOUNT * offset + "%");
+		}
+		else if ((offset > .5 || offset < -.3) && $(this).hasClass('highlighted')) {
+			console.log("unHighlightWork")
+			unHighlightWork($(this));
+		}
+	})
+}
 
 $(".work").each(function() {
-	$(this).hover(hoverWork, unHoverWork);
+	//$(this).hover(hoverWork, unHoverWork);
 });
 
 $('.work').each(function() {
 	$(this).click(clickWork);
 });
 
-
+$(window).scroll(worksParallax);
 

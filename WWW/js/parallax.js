@@ -1,7 +1,9 @@
-var PARALLAX_AMOUNT = 500;
+var PARALLAX_AMOUNT = 300;
 
 //LIST OF ELEMENTS CONTAINING A PARALLAX CHILD
-var parallaxElements = ['.about'];//, '.resume', '.contact'];
+var parallaxElements = ['.about', '.resume','.contact'];
+
+//FOR WORKS PARALLAX SEE WORKS.JS, FOR PARTICLE PARALLAX SEE PARTICLES.JS
 
 $(window).scroll(parallax);
 
