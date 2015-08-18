@@ -58,10 +58,14 @@ function getOffsetPercentage(e) {
 }
 
 parallax();
+
 $(document).ready(
   function() { 
-    $("html").niceScroll({
-    	mousescrollstep: 50
-    });
+  	if (navigator.appVersion.indexOf("Win")!=-1) {
+  		console.log('using windows');
+    	$("html").niceScroll({
+    		mousescrollstep: 50
+    	});
+	}
   }
 );
