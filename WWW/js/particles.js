@@ -36,6 +36,9 @@
 	var context;
 
 	function initEnvironment() {
+		if(PLATFORM = "mobile") {
+ 			NUM_PARTICLES = 20;
+		}
 		window.addEventListener('mousemove', MouseMove, false);
 		window.addEventListener('mousedown', MouseDown, false);
 		window.addEventListener('mouseup', MouseUp, false);
@@ -72,7 +75,9 @@
 	function TimeUpdate(e) {
 		eraseParticles();
 
-		parallaxParticles();
+		if (PLATFORM != "mobile") {
+			parallaxParticles();
+		}
 
 		for ( var i = 0; i < curr_particles; i++) {
 			particle = particles[i];

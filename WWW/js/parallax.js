@@ -4,8 +4,10 @@ var PARALLAX_AMOUNT = 300;
 var parallaxElements = ['.about', '.resume','.contact'];
 
 //FOR WORKS PARALLAX SEE WORKS.JS, FOR PARTICLE PARALLAX SEE PARTICLES.JS
+if (PLATFORM != "mobile") {
+	$(window).scroll(parallax);	
+}
 
-$(window).scroll(parallax);
 
 function parallax(e) {
 	fadeName();
@@ -60,12 +62,11 @@ function getOffsetPercentage(e) {
 parallax();
 
 $(document).ready(
-  function() { 
-  	if (navigator.appVersion.indexOf("Win")!=-1) {
-  		console.log('using windows');
-    	$("html").niceScroll({
-    		mousescrollstep: 50
-    	});
+	function() {
+		if (PLATFORM == "windows") {
+			$("html").niceScroll({
+    			mousescrollstep: 50
+		    });
+		}
 	}
-  }
 );

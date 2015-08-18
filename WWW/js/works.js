@@ -100,5 +100,7 @@ $('.work').each(function() {
 	$(this).click(clickWork);
 });
 
-$(window).scroll(worksParallax);
+if (PLATFORM != "mobile") {
+	$(window).scroll(worksParallax);
+}
 
