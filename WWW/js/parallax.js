@@ -58,3 +58,10 @@ function getOffsetPercentage(e) {
 }
 
 parallax();
+$(document).ready(
+  function() { 
+    $("html").niceScroll({
+    	mousescrollstep: 50
+    });
+  }
+);
