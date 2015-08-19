@@ -86,7 +86,6 @@ function worksParallax() {
 		}
 
 		else if ((offset > .5 || offset < -.2) && $(this).hasClass('highlighted')) {
-			console.log("unHighlightWork")
 			unHighlightWork($(this));
 		}
 	})
@@ -97,10 +96,39 @@ $(".work").each(function() {
 });
 
 $('.work').each(function() {
-	$(this).click(clickWork);
+	//$(this).click(clickWork);
 });
 
-if (PLATFORM != "mobile") {
+if (PLATFORM !== "mobile") {
+	
 	$(window).scroll(worksParallax);
 }
 
+function resizeWorks() {
+	$('.work .bottom').each(function(){
+		var w = $(this).width();
+		var h = $(this).height();
+  		var imgClass = (w/h > 1.303) ? 'wide' : 'tall';
+  		var img = $(this).find('img');
+  		if (w/h > 1.303) { // WIDE
+  			img.removeClass('tall');
+  			img.addClass('wide');
+  		}
+  		else { //TALL
+  			img.removeClass('wide');
+  			img.addClass('tall');
+  			offset = (img.width() - w) / 2;
+  			if (offset > 0) {
+  				img.css('margin-left', -1 * offset + "px");
+  			}
+  			console.log(w, img.width(), "offset", offset)
+  		}
+
+ 	});
+}
+
+$(window).resize(function() {
+	resizeWorks();
+});
+
+resizeWorks();

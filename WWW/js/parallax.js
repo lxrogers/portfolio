@@ -4,7 +4,7 @@ var PARALLAX_AMOUNT = 300;
 var parallaxElements = ['.about', '.resume','.contact'];
 
 //FOR WORKS PARALLAX SEE WORKS.JS, FOR PARTICLE PARALLAX SEE PARTICLES.JS
-if (PLATFORM != "mobile") {
+if (PLATFORM !== "mobile") {
 	$(window).scroll(parallax);	
 }
 
@@ -58,8 +58,9 @@ function getOffsetPercentage(e) {
 	var offset = eTop - $(window).scrollTop();
 	return offset / $(window).height();
 }
-
-parallax();
+if (PLATFORM !== "mobile") {
+	parallax();
+}
 
 $(document).ready(
 	function() {

@@ -36,7 +36,7 @@
 	var context;
 
 	function initEnvironment() {
-		if(PLATFORM = "mobile") {
+		if(PLATFORM == "mobile") {
  			NUM_PARTICLES = 20;
 		}
 		window.addEventListener('mousemove', MouseMove, false);
@@ -75,7 +75,7 @@
 	function TimeUpdate(e) {
 		eraseParticles();
 
-		if (PLATFORM != "mobile") {
+		if (PLATFORM !== "mobile") {
 			parallaxParticles();
 		}
 
