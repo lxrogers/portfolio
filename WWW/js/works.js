@@ -101,6 +101,7 @@ $('.work').each(function() {
 
 if (PLATFORM !== "mobile") {
 	$(window).scroll(worksParallax);
+	worksParallax();
 }
 
 function resizeWorks() {
