@@ -100,7 +100,6 @@ $('.work').each(function() {
 });
 
 if (PLATFORM !== "mobile") {
-	
 	$(window).scroll(worksParallax);
 }
 
@@ -113,6 +112,7 @@ function resizeWorks() {
   		if (w/h > 1.303) { // WIDE
   			img.removeClass('tall');
   			img.addClass('wide');
+  			img.css('margin-left', "0px");
   		}
   		else { //TALL
   			img.removeClass('wide');
