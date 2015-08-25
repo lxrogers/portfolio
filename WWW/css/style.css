@@ -74,7 +74,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .control {
-	width: 50px; height: 50px; float: right;
+	margin: 4px;
+	cursor: hand;
+	cursor: pointer;
+	float: right;
 }
 
 /* SPLASH
@@ -98,6 +101,77 @@ h1, h2, h3, h4, h5, h6 {
 	color: white;
 	width: 100%;
 	text-align: center;
+}
+
+#circle {
+	width: 20px;
+	height: 20px;
+	background: #68A68D;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+
+#circle:hover {
+	background: #95EDC9;
+}
+
+#heart {
+    position: relative;
+    width: 22px;
+    height: 22px;
+}
+
+#heart:before,
+#heart:after {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 0;
+    width: 50%;
+    height: 88%;
+    background: #B31717;
+    -moz-border-radius: 15px 15px 0 0;
+    border-radius: 15px 15px 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+}
+#heart:after {
+    left: 0;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}
+
+#heart:hover:after, #heart:hover:before {
+	background: red;
+}
+
+#scatter {
+	color: gray;
+}
+
+#scatter i {
+	font-size: 22px;
+}
+
+#scatter:hover {
+	color: white;
 }
 
 /* About

@@ -108,8 +108,8 @@
 	}
 
 	function accelPart(particle) {
-		particle.x *= .9;
-		particle.y *= .9;
+		particle.x *= .88;
+		particle.y *= .88;
 	}
 	
 	function movePart(particle) {
