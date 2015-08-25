@@ -17,6 +17,7 @@
 	var CANVAS_RATIO;
 	var CANVAS_HEIGHT = 500;
 
+	particle_lock = false;
 	//particle sliding variables
 	var mouseDown = false;
 
@@ -65,8 +66,6 @@
 				vx : ((Math.random() * (VELOCITY * 2)) - VELOCITY) + 1,
 				vy : ((Math.random() * (VELOCITY * 2)) - VELOCITY) + 2,
 				currentSize : Math.random() * SEED_SIZE,
-				accel : false,
-				lock : false,
 				color : colors[Math.floor(Math.random() * colors.length)]
 			});
 		}
@@ -113,7 +112,7 @@
 	}
 	
 	function movePart(particle) {
-		if (!particle.lock) {
+		if (!particle_lock) {
 			border(particle);
 			particle.originX += particle.vx * .75;//  * 1.5 * (1 - (particle.currentSize / SEED_SIZE ));
 			particle.originY += particle.vy * .75;// * 1.5 * (1 - (particle.currentSize / SEED_SIZE ));
@@ -182,6 +181,7 @@
 	}
 	<!-- Parallax Particles -->
 	function parallaxParticles() {
+		if (particle_lock) return;
 		slideParticles(particleParallax.dx, 0);
 		particleParallax.dx *= .88;
 		//y
@@ -258,12 +258,13 @@
 		var particle;
 		for ( var i = 0; i < len; i++) {
 			particle = particles[i];
-			particle.lock = false;
+
 		}
+		particle_lock = false;
 	}
 
 	//!! SHAPES   !!!
-	function shapeAll(x, y, xfunc, yfunc, size, cs, l) {
+	function shapeAll(x, y, xfunc, yfunc, size, cs, lock) {
 		var len = particles.length;
 		var particle;
 		for ( var i = 0; i < len; i++) {
@@ -276,16 +277,15 @@
 			particle.x = px - particle.originX;
 			particle.y = py - particle.originY;
 			particle.color = cs[Math.floor(Math.random() * cs.length)]
-			particle.accel = true;
-			particle.lock = l;
 		}
+		particle_lock = lock;
 		count = 0;
 	}
 
 	//SHAPE FUNCTIONS
 	// BLEH X_X
 	function Scatter() {
-		shapeAll(0,0, ScatterXFunc, ScatterYFunc, 1, colors, false);
+		shapeAll(0,0, ScatterXFunc, ScatterYFunc, 1, colors);
 	}
 
 	function ScatterXFunc(t) {return Math.random() * canvas.width;}
