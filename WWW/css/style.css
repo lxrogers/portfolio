@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 	left: 0;
   	width: 100%;
   	height: 100%;
-  	opacity: .7;
+  	opacity: .5;
 	background: url(../img/diagonals.png) repeat rgba(0,0,0,.6);
 }
 
@@ -187,6 +187,15 @@ h1, h2, h3, h4, h5, h6 {
 .about p {
 	color: #666;
 	letter-spacing: 0rem;
+}
+
+#trifecta {
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+.trifecta {
+	opacity: 0;
 }
 
 #catchphrase {

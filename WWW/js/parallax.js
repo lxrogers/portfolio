@@ -2,7 +2,7 @@ var PARALLAX_AMOUNT = 300;
 
 //LIST OF ELEMENTS CONTAINING A PARALLAX CHILD
 var parallaxElements = ['.about', '.resume','.contact'];
-
+var trifecta_popped = false;
 //FOR WORKS PARALLAX SEE WORKS.JS, FOR PARTICLE PARALLAX SEE PARTICLES.JS
 if (PLATFORM !== "mobile") {
 	$(window).scroll(parallax);	
@@ -12,6 +12,7 @@ if (PLATFORM !== "mobile") {
 function parallax(e) {
 	fadeName();
 	fadeHint();
+	popTrifecta();
 
 	for (var i = 0; i < parallaxElements.length; i++) {
 		applyParallax(parallaxElements[i]);
@@ -20,6 +21,27 @@ function parallax(e) {
 
 
 //specific parallax functions
+function popTrifecta() {
+	var aboutOffset = getOffsetPercentage($('.about'));
+	if (!trifecta_popped && aboutOffset < .3) {
+		$('#design').animate({
+        		opacity: 1
+    		}, 1000, "easeOutExpo");
+		
+		$('#engineer').delay(500).animate({
+        		opacity: 1
+    		}, 1000, "easeOutExpo");
+		
+		$('#innovate').delay(1000).animate({
+        		opacity: 1
+    		}, 1000, "easeOutExpo");
+		
+
+
+		trifecta_popped = true;
+	}
+}
+
 function fadeName() {
 	var splashOffset = getOffsetPercentage($('.splash'));
 	var newOffset = (splashOffset + 1) * 3 - 2;
