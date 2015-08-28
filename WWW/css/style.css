@@ -53,6 +53,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .parallax {
 	margin-top: 200;
+	height: 100%;
 }
 
 /* CANVAS
@@ -79,6 +80,12 @@ h1, h2, h3, h4, h5, h6 {
 	cursor: pointer;
 	float: right;
 }
+
+.container {
+	height: 100%;
+}
+
+
 
 /* SPLASH
 -------------------------------------------------- */
@@ -181,6 +188,7 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: left;
 	background: url(../img/SimpleDesktops.png) no-repeat; 
   	background-size: cover;
+  	height: 150%;
 
 }
 
@@ -190,18 +198,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #trifecta {
-	margin-top: 10%;
-	margin-bottom: 10%;
+	margin-top: 20%;
+	height: 20%;
+	text-align: center;
 }
 
 .trifecta {
 	opacity: 0;
 }
 
-#catchphrase {
-	padding-top: 30%;
+#essay {
+	margin-top:10%;
 }
 
+#essay img {
+	width: 100%;
+}
 /* RESUME
 ------------------------------------------------- */
 .resume {

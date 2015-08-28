@@ -14,7 +14,7 @@ var SUBTITLE_FONT_SIZE_BEGIN = '1.3em';
 var HEADER_BASE_BOTTOM = 70;
 var SUBTITLE_BASE_TOP = 30;
 
-var WORKS_PARALLAX_AMOUNT = 75;
+var WORKS_PARALLAX_AMOUNT = 25;
 var scroll_counter = 0;
 
 $("#about").click(function() {

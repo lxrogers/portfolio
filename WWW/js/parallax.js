@@ -1,4 +1,4 @@
-var PARALLAX_AMOUNT = 300;
+var PARALLAX_AMOUNT = 200;
 
 //LIST OF ELEMENTS CONTAINING A PARALLAX CHILD
 var parallaxElements = ['.about', '.resume','.contact'];
@@ -19,24 +19,22 @@ function parallax(e) {
 	}
 }
 
-
+function pop(element) {
+	element.css('font-size', '3.5em');
+	element.css('opacity', 1);
+	element.animate({
+        		'font-size': '3em'
+    		}, 1000, "easeOutExpo");
+}
 //specific parallax functions
 function popTrifecta() {
 	var aboutOffset = getOffsetPercentage($('.about'));
 	if (!trifecta_popped && aboutOffset < .3) {
-		$('#design').animate({
-        		opacity: 1
-    		}, 1000, "easeOutExpo");
+		pop($('#design'));
 		
-		$('#engineer').delay(500).animate({
-        		opacity: 1
-    		}, 1000, "easeOutExpo");
-		
-		$('#innovate').delay(1000).animate({
-        		opacity: 1
-    		}, 1000, "easeOutExpo");
-		
+		window.setTimeout(function() {pop($('#engineer'))}, 500);
 
+		window.setTimeout(function() {pop($('#innovate'))}, 1000);
 
 		trifecta_popped = true;
 	}
