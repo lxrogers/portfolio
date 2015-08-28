@@ -199,9 +199,11 @@ function scroll(e) {
 <!-- MOUSE EVENTS -->
 
 function MouseMove(e) {
-	particleParallax.dx = mouse.x - e.pageX;
-	mouse.x = e.pageX;
-	mouse.y = e.pageY;
+	if (e) {
+		particleParallax.dx = mouse.x - e.pageX;
+		mouse.x = e.pageX;
+		mouse.y = e.pageY;
+	}
 }
 
 function MouseDown(e) {
@@ -261,7 +263,7 @@ function release() {
 
 	}
 	particle_lock = false;
-	mouseMove();
+	MouseMove();
 
 }
 
@@ -310,4 +312,4 @@ if (canvas && canvas.getContext) {
 	initParticles();
 }
 
-mouseMove();
+MouseMove();

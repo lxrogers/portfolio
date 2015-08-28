@@ -17,6 +17,30 @@ var SUBTITLE_BASE_TOP = 30;
 var WORKS_PARALLAX_AMOUNT = 75;
 var scroll_counter = 0;
 
+$("#about").click(function() {
+    $('html, body').animate({
+        scrollTop: $(".about").offset().top
+    }, 500);
+});
+
+$("#resume").click(function() {
+    $('html, body').animate({
+        scrollTop: $(".resume").offset().top
+    }, 500);
+});
+
+$("#work").click(function() {
+    $('html, body').animate({
+        scrollTop: $(".works").offset().top
+    }, 500);
+});
+
+$("#contact").click(function() {
+    $('html, body').animate({
+        scrollTop: $(".contact").offset().top
+    }, 500);
+});
+
 function hightlightWork(work) {
 	$(".work").stop();
 	work.find(".bottom").fadeTo(100, .5);
