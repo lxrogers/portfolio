@@ -197,10 +197,22 @@ h1, h2, h3, h4, h5, h6 {
 	letter-spacing: 0rem;
 }
 
+#design {
+	height: 100%;
+}
+
 #trifecta {
-	margin-top: 20%;
-	height: 20%;
-	text-align: center;
+	padding: 20% 0%;
+}
+
+#trifecta .row {
+	margin-bottom: 5%;
+}
+
+#trifecta img {
+	width: 60%;
+	margin-left: 195%;
+	opacity: 0;
 }
 
 .trifecta {
@@ -213,6 +225,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #essay img {
 	width: 100%;
+	margin-top: -20%;
 }
 /* RESUME
 ------------------------------------------------- */

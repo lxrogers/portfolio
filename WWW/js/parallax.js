@@ -8,7 +8,6 @@ if (PLATFORM !== "mobile") {
 	$(window).scroll(parallax);	
 }
 
-
 function parallax(e) {
 	fadeName();
 	fadeHint();
@@ -29,12 +28,44 @@ function pop(element) {
 //specific parallax functions
 function popTrifecta() {
 	var aboutOffset = getOffsetPercentage($('.about'));
-	if (!trifecta_popped && aboutOffset < .3) {
-		pop($('#design'));
-		
-		window.setTimeout(function() {pop($('#engineer'))}, 500);
+	if (!trifecta_popped && aboutOffset < .15) {
 
-		window.setTimeout(function() {pop($('#innovate'))}, 1000);
+
+		$('#d-heart').animate({
+			'width': '50%',
+			'margin-left': '200%',
+			'opacity': 1
+		}, 1000,"easeOutExpo");
+
+		$('#e-circle').delay(200).animate({
+			'width': '50%',
+			'margin-left': '200%',
+			'opacity' : 1
+		}, 1000,"easeOutExpo");
+
+		$('#i-shuffle').delay(400).animate({
+			'width': '50%',
+			'margin-left': '200%',
+			'opacity' : 1
+		}, 1000,"easeOutExpo");
+
+		window.setTimeout(function() {
+			$('#trifecta img').stop().animate({
+				'margin-left' : '10%'
+			}, 1000, "easeOutExpo");
+		}, 800);
+
+		window.setTimeout(function() {
+			$('.trifecta').animate({
+				'opacity' : 1,
+				'margin-top' : '10px'
+			}, 2000, "easeOutExpo");
+		}, 1300)
+		//pop($('#design'));
+		
+		//window.setTimeout(function() {pop($('#engineer'))}, 500);
+
+		//window.setTimeout(function() {pop($('#innovate'))}, 1000);
 
 		trifecta_popped = true;
 	}
