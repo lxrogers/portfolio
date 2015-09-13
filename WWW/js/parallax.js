@@ -117,7 +117,7 @@ $(document).ready(
 	function() {
 		if (PLATFORM == "windows") {
 			$("html").niceScroll({
-    			mousescrollstep: 50
+    			mousescrollstep: 65
 		    });
 		}
 	}
