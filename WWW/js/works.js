@@ -84,10 +84,15 @@ function unHighlightWork(work) {
 
 function clickWork() {
 	$(this).animate(
-		{height: '100%'},
-		1000,
+		{height: '28%'},
+		750,
 		"easeOutExpo"
 	);
+	$('html, body').animate({
+	    scrollTop: $(this).offset().top
+		}, 750,
+		"easeOutExpo");
+	unHighlightWork($(this));
 }
 
 function worksParallax() {
@@ -120,7 +125,7 @@ $(".work").each(function() {
 });
 
 $('.work').each(function() {
-	//$(this).click(clickWork);
+	$(this).click(clickWork);
 });
 
 if (PLATFORM !== "mobile") {
