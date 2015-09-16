@@ -109,6 +109,12 @@ function getOffsetPercentage(e) {
 	var offset = eTop - $(window).scrollTop();
 	return offset / $(window).height();
 }
+
+function getMarginLeftPercentage(e) {
+	var marginLeft = parseFloat(e.css('margin-left'));
+	return marginLeft / $(window).width();
+}
+
 if (PLATFORM !== "mobile") {
 	parallax();
 }
@@ -116,9 +122,9 @@ if (PLATFORM !== "mobile") {
 $(document).ready(
 	function() {
 		if (PLATFORM == "windows") {
-			$("html").niceScroll({
-    			mousescrollstep: 65
-		    });
+			//$("html").niceScroll({
+    		//	mousescrollstep: 65
+		    //});
 		}
 	}
 );

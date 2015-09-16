@@ -17,6 +17,8 @@ var SUBTITLE_BASE_TOP = 30;
 var WORKS_PARALLAX_AMOUNT = 25;
 var scroll_counter = 0;
 
+var oneUp = false;
+
 $("#about").click(function() {
     $('html, body').animate({
         scrollTop: $(".about").offset().top
@@ -83,16 +85,45 @@ function unHighlightWork(work) {
 }
 
 function clickWork() {
-	$(this).animate(
-		{height: '28%'},
+	if (oneUp == true) {
+		advanceWork($(this));
+	}
+	else if (oneUp == false) {
+		clickIntoWork($(this));
+		oneUp = true;
+	}
+}
+function advanceWork(work) {
+	work.stop();
+	var nextPct = (Math.floor(getMarginLeftPercentage(work)) - 1) * 100 + "%";
+	work.animate(
+		{'margin-left': nextPct},
 		750,
 		"easeOutExpo"
 	);
+}
+
+function clickIntoWork(work) {
+	disableWorks();
+	work.animate(
+		{height: '28%',
+		opacity: '100%'},
+		1000,
+		"easeOutExpo"
+	);
 	$('html, body').animate({
-	    scrollTop: $(this).offset().top
+	    scrollTop: work.offset().top
 		}, 750,
 		"easeOutExpo");
-	unHighlightWork($(this));
+	unHighlightWork(work);
+}
+
+function disableWorks() {
+	$(window).unbind('scroll');
+}
+
+function clickOutOfWork(work) {
+
 }
 
 function worksParallax() {
@@ -118,6 +149,7 @@ function worksParallax() {
 			unHighlightWork($(this));
 		}
 	})
+
 }
 
 $(".work").each(function() {

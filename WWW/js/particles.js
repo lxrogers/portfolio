@@ -2,11 +2,11 @@
 var NUM_PARTICLES = 45;
 var curr_particles = NUM_PARTICLES;
 var PARTICLE_TO_SCREEN_RATIO = 20;
-var VELOCITY = 1.3;
+var VELOCITY = 1;
 var colors = [ "#F27979", "#FFD6D6", "#B31717", "#E6FFFF", "#DA95ED", "#95EDC9"];
 var heartColors = [ "#F27979", "#FFD6D6", "#B31717" ];
 var circleColors = [ "#E6FFFF", "#DA95ED", "#95EDC9" ]
-var SEED_SIZE = 10;
+var SEED_SIZE = 15;
 var FLICKER_RATE = .06;
 
 //ENVIRONMENT PARAMS
@@ -51,7 +51,7 @@ function initEnvironment() {
 	$(window).scroll(scroll);
 	ResizeCanvas();
 	
-	setInterval(TimeUpdate, 27);
+	setInterval(TimeUpdate, 23);
 	
 }
 
@@ -63,8 +63,8 @@ function initParticles() {
 			y : 0,
 			originX : Math.random() * canvas.width,
 			originY : Math.random() * canvas.height,
-			vx : ((Math.random() * (VELOCITY * 2)) - VELOCITY) + 1,
-			vy : ((Math.random() * (VELOCITY * 2)) - VELOCITY) + 2,
+			vx : .5 + Math.random() * 1,
+			vy : .5 + Math.random() * 2,
 			currentSize : Math.random() * SEED_SIZE,
 			color : colors[Math.floor(Math.random() * colors.length)]
 		});
@@ -99,7 +99,7 @@ function clearCanvas()  {
 
 // make the particle pop back up to a random size
 function popPart(particle) {
-	if (particle.currentSize < 3) {
+	if (particle.currentSize < 1) {
 		particle.currentSize = Math.random() * SEED_SIZE;
 	} else {
 		particle.currentSize *= .96;
