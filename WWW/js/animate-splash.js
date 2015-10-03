@@ -20,14 +20,14 @@ function animateIntro() {
 
 animateIntro();
 
-$('#heart').click(function(e) {
+$('.heart.control').click(function(e) {
 	Heart(canvas.width/2, canvas.height * 2/5);
 });
 
-$('#circle').click(function(e) {
+$('.circle.control').click(function(e) {
 	Circle(canvas.width/2, canvas.height/2);
 });
 
-$('#scatter').click(function(e) {
+$('.scatter.control').click(function(e) {
 	Scatter();
 });

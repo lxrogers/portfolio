@@ -109,6 +109,7 @@ function getOffsetPercentage(e) {
 	var offset = eTop - $(window).scrollTop();
 	return offset / $(window).height();
 }
+
 if (PLATFORM !== "mobile") {
 	parallax();
 }
