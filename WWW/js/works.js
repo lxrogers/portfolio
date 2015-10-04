@@ -17,6 +17,8 @@ var SUBTITLE_BASE_TOP = 30;
 var WORKS_PARALLAX_AMOUNT = 25;
 var scroll_counter = 0;
 
+currentWork = null;
+
 $("#about").click(function() {
     $('html, body').animate({
         scrollTop: $(".about").offset().top
@@ -42,7 +44,6 @@ $("#contact").click(function() {
 });
 
 function hoverWork() {
-	console.log('hover');
 	if ($(this).hasClass("clicked")) return;
 	$(this).find(".bottom").fadeTo(100, .5);
 
@@ -64,7 +65,6 @@ function hoverWork() {
 }
 
 function unHoverWork() {
-	
 	var header = $(this).find(".overlay").find(HEADER_CLASS);
 	var subtitle = $(this).find(".overlay").find(SUBTITLE_CLASS);
 	header.stop();
@@ -80,12 +80,15 @@ function unHoverWork() {
 		"easeOutExpo");
 	
 	
-	$(this).find(".bottom").delay(delayTime*2).fadeTo(200, 1);
+	if (!$(this).hasClass("clicked")) {
+		$(this).find(".bottom").delay(delayTime*2).fadeTo(200, 1);
+	}
+
 	$(this).removeClass("highlighted");
 }
 
-
 function openWork(work) {
+	var slideDeck = work.find('.slide-deck');
 	work.animate(
 		{"padding-bottom": '70%',
 		"margin-top" : "5%",
@@ -100,7 +103,12 @@ function openWork(work) {
 		}, 750,
 		"easeOutExpo");	
 
-	$(this).queue(unHoverWork);
+	unHoverWork.apply(work);
+
+	work.find('.bottom').fadeTo(750,0);
+	slideDeck.stop();
+	slideDeck.css("margin-left", "0")
+	slideDeck.css("opacity", "1");
 }
 
 function closeWork(work) {
@@ -110,12 +118,49 @@ function closeWork(work) {
 		750,
 		"easeOutExpo"
 	);
+
+	work.removeClass("clicked")
+	hoverWork.apply(work);
+
+	work.find('.slide-deck').animate({"opacity" : 0}, 750, "easeOutExpo")
+}
+
+function getCurrentSlideIndex(slideDeck) {
+	var px = parseInt(slideDeck.css("margin-left"));
+	var pct =  -1 * px / slideDeck.parent().width();
+	if (pct == 0) 
+		return 0;
+	if (pct > 0 && pct <= 1)
+		return 1;
+	if (pct > 1 && pct <= 2)
+		return 2;
+}
+
+function getNextSlideMarginLeft(currentIndex) {
+	var nextIndex = currentIndex + 1;
+	if (currentIndex == 2) {
+		nextIndex = 2;
+	}
+	return (nextIndex) * -100 + "%";
+}
+
+function advanceWork(work) {
+	var slideDeck = work.find('.slide-deck');
+	slideDeck.stop()
+	var currentIndex = getCurrentSlideIndex(slideDeck);
+	var nextMarginPct = getNextSlideMarginLeft(currentIndex);
+
+	slideDeck.animate(
+		{"margin-left" : nextMarginPct},
+		750,
+		"easeOutExpo")
 }
 
 function clickWork() {
 	if ($(this).hasClass("clicked")) {
-		$(this).toggleClass("clicked");
-		closeWork($(this));
+		$(this).addClass("clicked");
+		//closeWork($(this));
+		advanceWork($(this));
 	}
 	else {
 		$(this).toggleClass("clicked");
@@ -123,7 +168,9 @@ function clickWork() {
 	}
 }
 
-
+function closeCurrentWork() {
+	closeWork($('.work.clicked'));
+}
 
 
 $(".work").each(function() {
@@ -134,36 +181,10 @@ $('.work').each(function() {
 	$(this).click(clickWork);
 });
 
+$('.slide-close').each(function() {
+	$(this).click(closeCurrentWork)
+})
+
 if (PLATFORM !== "mobile") {
 	
 }
-
-function resizeWorks() {
-	$('.work .bottom').each(function(){
-		var w = $(this).width();
-		var h = $(this).height();
-  		var imgClass = (w/h > 1.303) ? 'wide' : 'tall';
-  		var img = $(this).find('img');
-  		if (w/h > 1.303) { // WIDE
-  			img.removeClass('tall');
-  			img.addClass('wide');
-  			img.css('margin-left', "0px");
-  		}
-  		else { //TALL
-  			img.removeClass('wide');
-  			img.addClass('tall');
-  			offset = (img.width() - w) / 2;
-  			if (offset > 0) {
-  				img.css('margin-left', -1 * offset + "px");
-  			}
-  			console.log(w, img.width(), "offset", offset)
-  		}
-
- 	});
-}
-
-$(window).resize(function() {
-	resizeWorks();
-});
-
-resizeWorks();

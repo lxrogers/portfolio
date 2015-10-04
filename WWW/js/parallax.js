@@ -117,9 +117,9 @@ if (PLATFORM !== "mobile") {
 $(document).ready(
 	function() {
 		if (PLATFORM == "windows") {
-			$("html").niceScroll({
-    			mousescrollstep: 65
-		    });
+			//$("html").niceScroll({
+    		//	mousescrollstep: 65
+		    //});
 		}
 	}
 );

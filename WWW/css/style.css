@@ -203,14 +203,47 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 }
 
-.work .bottom img.wide {
-	width: 100%;
-	height: auto;
+.work .slide-deck {
+	position: absolute;
+	width: 300%;
+	height: 100%;
+	opacity: 0;
 }
 
-.work .bottom img.tall {
-	height: 120%;
-    width: auto;
+.slide-nav {
+	position: absolute;
+	background-color: blue;
+	width: 100%;
+}
+
+.slide-nav .slide-close {
+	position: absolute;
+	right: -30px;
+	
+	width: 24px;
+	height: 24px;
+	
+	padding: 3px 0;
+
+	cursor: hand;
+	cursor: pointer;
+	color: gray;
+	transition: color .75s;
+}
+
+.slide-nav .slide-close:hover {
+	color: black;
+}
+
+.work .slide {
+	float: left;
+	width: 33.333%;
+	padding-bottom: 100%;
+	background-color: red;
+}
+
+.work .slide img {
+	width: 100%;
 }
 
 .work .overlay {
@@ -238,6 +271,7 @@ h1, h2, h3, h4, h5, h6 {
 	top: 30%;
 	width: 100%;
 }
+
 .work .subtitle {
 	font-family: 'Open Sans', sans-serif;
 	letter-spacing: .3rem;
