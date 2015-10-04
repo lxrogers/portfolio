@@ -90,9 +90,7 @@ function unHoverWork() {
 function openWork(work) {
 	var slideDeck = work.find('.slide-deck');
 	work.animate(
-		{"padding-bottom": '70%',
-		"margin-top" : "5%",
-		"margin-bottom" : "5%"},
+		{"padding-bottom": '70%'},
 		750,
 		"easeOutExpo"
 	);
@@ -108,13 +106,12 @@ function openWork(work) {
 	work.find('.bottom').fadeTo(750,0);
 	slideDeck.stop();
 	slideDeck.css("margin-left", "0")
-	slideDeck.css("opacity", "1");
+	slideDeck.animate({"opacity" : "1"});
 }
 
 function closeWork(work) {
 	work.animate(
-		{"padding-bottom": '50%',
-		"margin" : "0"},
+		{"padding-bottom": '50%'},
 		750,
 		"easeOutExpo"
 	);
