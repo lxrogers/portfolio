@@ -110,6 +110,12 @@ function getOffsetPercentage(e) {
 	return offset / $(window).height();
 }
 
+function getBottomOffsetPercentage(e) {
+	var eTop = e.offset().top;
+	var offset = eTop - $(window).scrollTop() + e.outerHeight();
+	return offset / $(window).height();
+}
+
 if (PLATFORM !== "mobile") {
 	parallax();
 }

@@ -2,7 +2,7 @@ var HEADER_CLASS = "h2";
 var SUBTITLE_CLASS = "h6";
 
 var zoomTime = 700;
-var delayTime = 100;
+var delayTime = 10;
 var SUBTITLE_DELAY = 100;
 
 var HEADER_FONT_SIZE_END = '2.5em';
@@ -44,6 +44,7 @@ $("#contact").click(function() {
 });
 
 function hoverWork() {
+	console.log($(this));
 	if ($(this).hasClass("clicked")) return;
 	$(this).find(".bottom").fadeTo(100, .5);
 
@@ -90,7 +91,8 @@ function unHoverWork() {
 function openWork(work) {
 	var slideDeck = work.find('.slide-deck');
 	work.animate(
-		{"padding-bottom": '70%'},
+		{"padding-bottom": '70%',
+		"margin-top":"0px"},
 		750,
 		"easeOutExpo"
 	);
@@ -100,6 +102,7 @@ function openWork(work) {
 	    scrollTop: work.offset().top - offset
 		}, 750,
 		"easeOutExpo");	
+
 
 	unHoverWork.apply(work);
 
@@ -111,7 +114,8 @@ function openWork(work) {
 
 function closeWork(work) {
 	work.animate(
-		{"padding-bottom": '50%'},
+		{"padding-bottom": '50%',
+		"margin-top" : "-50px"},
 		750,
 		"easeOutExpo"
 	);
@@ -169,10 +173,28 @@ function closeCurrentWork() {
 	closeWork($('.work.clicked'));
 }
 
+function worksParallax() {
+	$(".work").each(function() {
+		var topOffset = getOffsetPercentage($(this));
+		var bottomOffset = getBottomOffsetPercentage($(this));
 
-$(".work").each(function() {
-	$(this).hover(hoverWork, unHoverWork);
-});
+		console.log(topOffset, bottomOffset);
+		
+		if ($(this).hasClass("highlighted")) {
+			if (bottomOffset < .6 || topOffset > .6) {
+				unHoverWork.apply($(this))
+			}
+		}
+		else { // unhighlighted
+			if (topOffset < .6 && bottomOffset > .6) {
+				hoverWork.apply($(this));
+			}
+		}
+	})
+}
+
+$(window).scroll(worksParallax);	
+
 
 $('.work').each(function() {
 	$(this).click(clickWork);
