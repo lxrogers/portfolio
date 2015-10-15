@@ -44,7 +44,6 @@ $("#contact").click(function() {
 });
 
 function hoverWork() {
-	console.log($(this));
 	if ($(this).hasClass("clicked")) return;
 	$(this).find(".bottom").fadeTo(100, .5);
 
@@ -129,8 +128,11 @@ function closeWork(work) {
 function getCurrentSlideIndex(slideDeck) {
 	var px = parseInt(slideDeck.css("margin-left"));
 	var pct =  -1 * px / slideDeck.parent().width();
+	
+
 	if (pct == 0) 
 		return 0;
+	return Math.ceil(pct)
 	if (pct > 0 && pct <= 1)
 		return 1;
 	if (pct > 1 && pct <= 2)
@@ -139,8 +141,8 @@ function getCurrentSlideIndex(slideDeck) {
 
 function getNextSlideMarginLeft(currentIndex) {
 	var nextIndex = currentIndex + 1;
-	if (currentIndex == 2) {
-		nextIndex = 2;
+	if (currentIndex == 5) {
+		nextIndex = 5;
 	}
 	return (nextIndex) * -100 + "%";
 }
@@ -177,8 +179,6 @@ function worksParallax() {
 	$(".work").each(function() {
 		var topOffset = getOffsetPercentage($(this));
 		var bottomOffset = getBottomOffsetPercentage($(this));
-
-		console.log(topOffset, bottomOffset);
 		
 		if ($(this).hasClass("highlighted")) {
 			if (bottomOffset < .6 || topOffset > .6) {

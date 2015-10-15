@@ -215,9 +215,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .work .slide-deck {
 	position: absolute;
-	width: 300%;
+	width: 600%;
 	height: 100%;
 	opacity: 0;
+}
+
+.work .slide {
+	float: left;
+	width: 16.66%;
+	padding-bottom: 11.666%;
+	background-color: red;
+}
+
+.work .slide img {
+	min-width: 100%;
+	min-height: 100%;
 }
 
 .slide-nav {
@@ -246,32 +258,8 @@ h1, h2, h3, h4, h5, h6 {
 	color: black;
 }
 
-.work .slide {
-	float: left;
-	width: 33.333%;
-	padding-bottom: 25%;
-	background-color: red;
-}
+/* works images are in works-images.css */
 
-.work .slide img {
-	min-width: 100%;
-	min-height: 100%;
-}
-
-#chair1 {
-	background: url('../img/works/chair/chair3.jpg') no-repeat center center;
-	background-size: cover;
-}
-
-#chair2 {
-	background: url('../img/works/chair/chair2.jpg') no-repeat center center;
-	background-size: cover;
-}
-
-#chair3 {
-	background: url('../img/works/chair/chair1.jpg') no-repeat center center;
-	background-size: cover;
-}
 .work .overlay {
 	position: absolute;
 	z-index: 110;
