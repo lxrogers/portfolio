@@ -290,11 +290,12 @@ h1, h2, h3, h4, h5, h6 {
 .work .subtitle {
 	font-family: 'Open Sans', sans-serif;
 	letter-spacing: .3rem;
+	font-style: italic;
 }
 /* Contact
 -------------------------------------------------- */
 .contact {
-	height: 90%;
+	height: 40%;
 	padding-top: 40%;
 }
 
