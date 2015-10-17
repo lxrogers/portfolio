@@ -61,3 +61,35 @@
 	background: url('../img/works/exec/executive.jpg') no-repeat center center;
 	background-size: cover;
 }
+
+/* LED Visualizer
+------------------------------------------*/
+#led1 {
+	background: url('../img/works/exec/mood.jpg') no-repeat center center;
+	background-size: cover;
+}
+
+#led2 {
+	background: url('../img/works/led/sketches.jpg') no-repeat center center;
+	background-size: cover;
+}
+
+#led3 {
+	background: url('../img/works/led/cad.jpg') no-repeat center center;
+	background-size: cover;
+}
+
+#led4 {
+	background: url('../img/works/led/CNC0.jpg') no-repeat center center;
+	background-size: cover;
+}
+
+#led5 {
+	background: url('../img/works/led/CNC1.jpg') no-repeat center center;
+	background-size: cover;
+}
+
+#led6 {
+	background: url('../img/works/led/ledutive.jpg') no-repeat center center;
+	background-size: cover;
+}
