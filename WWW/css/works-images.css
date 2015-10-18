@@ -65,17 +65,17 @@
 /* LED Visualizer
 ------------------------------------------*/
 #led1 {
-	background: url('../img/works/exec/mood.jpg') no-repeat center center;
+	background: url('../img/works/led/oneled.jpg') no-repeat center center;
 	background-size: cover;
 }
 
 #led2 {
-	background: url('../img/works/led/sketches.jpg') no-repeat center center;
+	background: url('../img/works/led/lattice.jpg') no-repeat center center;
 	background-size: cover;
 }
 
 #led3 {
-	background: url('../img/works/led/cad.jpg') no-repeat center center;
+	background: url('../img/works/led/circuitboard.jpg') no-repeat center center;
 	background-size: cover;
 }
 
