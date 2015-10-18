@@ -139,19 +139,18 @@ function getCurrentSlideIndex(slideDeck) {
 		return 2;
 }
 
-function getNextSlideMarginLeft(currentIndex) {
-	var nextIndex = currentIndex + 1;
-	if (currentIndex == 5) {
-		nextIndex = 5;
-	}
+function getNextSlideMarginLeft(currentIndex, offset) {
+	var nextIndex = currentIndex + offset;
+	nextIndex = Math.min(5, nextIndex);
+	nextIndex = Math.max(0, nextIndex);
 	return (nextIndex) * -100 + "%";
 }
 
-function advanceWork(work) {
+function slideWork(work, indexOffset) {
 	var slideDeck = work.find('.slide-deck');
 	slideDeck.stop()
 	var currentIndex = getCurrentSlideIndex(slideDeck);
-	var nextMarginPct = getNextSlideMarginLeft(currentIndex);
+	var nextMarginPct = getNextSlideMarginLeft(currentIndex, indexOffset);
 
 	slideDeck.animate(
 		{"margin-left" : nextMarginPct},
@@ -163,7 +162,7 @@ function clickWork() {
 	if ($(this).hasClass("clicked")) {
 		$(this).addClass("clicked");
 		//closeWork($(this));
-		advanceWork($(this));
+		slideWork($(this), 1);
 	}
 	else {
 		$(this).toggleClass("clicked");
@@ -173,6 +172,11 @@ function clickWork() {
 
 function closeCurrentWork() {
 	closeWork($('.work.clicked'));
+}
+
+function backCurrentWork()  {
+	console.log('hi :)')
+	slideWork($('.work.clicked'), -1);
 }
 
 function worksParallax() {
@@ -202,6 +206,10 @@ $('.work').each(function() {
 
 $('.slide-close').each(function() {
 	$(this).click(closeCurrentWork)
+})
+
+$('.slide-back').each(function() {
+	$(this).click(backCurrentWork)
 })
 
 if (PLATFORM !== "mobile") {
