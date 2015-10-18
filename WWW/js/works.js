@@ -125,6 +125,18 @@ function closeWork(work) {
 	work.find('.slide-deck').animate({"opacity" : 0}, 750, "easeOutExpo")
 }
 
+function closeWorksExcept(leaveOpen) {
+	$('.work').each(function() {
+		if ($(this) != leaveOpen && $(this).hasClass("clicked")) {
+			$(this).css({"padding-bottom": '50%',
+						"margin-top" : "-50px"})
+			$(this).removeClass("clicked")
+			$(this).find('.slide-deck').css({"opacity" : 0})
+			$(this).find(".bottom").fadeTo(100, 1);
+		}
+	})
+}
+
 function getCurrentSlideIndex(slideDeck) {
 	var px = parseInt(slideDeck.css("margin-left"));
 	var pct =  -1 * px / slideDeck.parent().width();
@@ -165,7 +177,10 @@ function clickWork() {
 		slideWork($(this), 1);
 	}
 	else {
+		closeWorksExcept($(this))
+		
 		$(this).toggleClass("clicked");
+
 		openWork($(this));
 	}
 }
