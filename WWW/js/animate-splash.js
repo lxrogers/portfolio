@@ -1,9 +1,9 @@
 
-//Animate Three Words in
+//Animate Three Shapes In
 //----------------------------------------
 function animateIntro() {
 	var delayTime = 1200;
-	var initTime = -500;
+	var initTime = 100;
 	
 	setTimeout(function() {
 		Heart(canvas.width/2, canvas.height * 2/5);
@@ -17,8 +17,6 @@ function animateIntro() {
 		Scatter();
 	}, initTime + delayTime * 3);
 }
-
-animateIntro();
 
 $('.heart.control').click(function(e) {
 	Heart(canvas.width/2, canvas.height * 2/5);

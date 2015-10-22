@@ -39,7 +39,11 @@
 
 </head>
 <body>
-
+<div id="loader">
+	<div id="load-bar">
+	</div>
+</div>
+<div id="everything">
 	<div id="canvas">
 		<canvas id="projector" width="100%" height="100%" >Your browser does not support the Canvas element.</canvas>
 		<div class="filter"></div>
@@ -81,7 +85,7 @@
 					Hi, I'm Lawrence! <br/><br/>
 					I've been making things as long as I can remember--I even started coding at age 11 on my TI-83 Graphing Calculator!<br/><br/>
 
-					Over the years I've picked up a ton of skills, from native android develpment to TIG welding, to Design Thinking. I've worked at big tech companies like Facebook & Google, and I've also locked myself in my room for days at a time designing bottle openers. <br/><br/>
+					Over the years I've picked up a ton of skills, from native Android development to TIG welding, to Design Thinking. I've worked at big tech companies like Facebook & Google, and I've also locked myself in my room for days at a time designing bottle openers. <br/><br/>
 
 					I'm confident that the combination of design and engineering leads to innovation.
 					</p>
@@ -116,7 +120,7 @@
 	<div class="section works">
 		<div class="container">
 			<div class="row margin-bottom-10" id="works-heading">
-				<div class="twelve columns">
+				<div class="eight columns offset-by-three">
 					<h1>WORK</h1>
 				</div>
 			</div>
@@ -239,6 +243,18 @@
 				</div>
 			</div>
 			<div class="row">
+				<div class="three columns" style="text-align: right">
+					<h6>DESIGN FOR AMERICA</h6><br/>
+					<i>2014-2015 </i><br/>
+				</div>
+				<div class="eight columns">
+					<h6 class="title">CO-PRESIDENT, STANFORD STUDIO </h6><br/>
+					Coached 5 project teams through design procecss<br/>
+					Taught weekly Design Thinking & Project Leading Workshops<br/>
+					Led Studio through transformation focusing on implementation
+				</div>
+			</div>
+			<div class="row">
 				<div class="three columns " style="text-align: right">
 					<h6>FACEBOOK </h6> <br/>
 					<i>Summer 2013 </i><br/>
@@ -257,7 +273,6 @@
 				<div class="eight columns">
 					<h6 class="title">SOFTWARE ENGINEERING INTERN </h6><br/>
 					Full-stack engineer on PHP/Javascript front-end, MySQL database
-
 				</div>
 			</div>
 			<div class="row">
@@ -301,10 +316,34 @@
 		</div>
 	</div>
 
+	<div id="images-to-load">
+		<img src="img/works/fleur/sketches-small.jpg" class="load"></img>
+		<img src="img/works/fleur/models.jpg"></img>
+		<img src="img/works/fleur/cad.jpg"></img>
+		<img src="img/works/fleur/sanding.jpg"></img>
+		<img src="img/works/fleur/chair2.jpg"></img>
+		<img src="img/works/fleur/chair0.jpg"></img>
+
+		<img src="img/works/exec/mood.jpg"></img>
+		<img src="img/works/exec/sketches.jpg"></img>
+		<img src="img/works/exec/cad.jpg"></img>
+		<img src="img/works/exec/CNC0.jpg"></img>
+		<img src="img/works/exec/CNC1.jpg"></img>
+		<img src="img/works/exec/executive.jpg"></img>
+
+
+		<img src="img/works/led/oneled.jpg"></img>
+		<img src="img/works/led/lattice.jpg"></img>
+		<img src="img/works/led/circuitboard.jpg"></img>
+
+	</div>
+
+	<script src="js/animate-splash.js"></script>
+	<script src="js/progress.js"></script>
 	<script src="js/parallax.js"></script>
 	<script src="js/particles.js"></script>
-	<script src="js/animate-splash.js"></script>
 	<script src="js/animate-nav.js"></script>
 	<script src="js/works.js"></script>
+</div>
 </body>
 </html>
