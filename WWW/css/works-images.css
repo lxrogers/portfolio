@@ -48,17 +48,17 @@
 }
 
 #exec4 {
-	background: url('../img/works/exec/CNC0.jpg') no-repeat center center;
-	background-size: cover;
-}
-
-#exec5 {
 	background: url('../img/works/exec/CNC1.jpg') no-repeat center center;
 	background-size: cover;
 }
 
+#exec5 {
+	background: url('../img/works/exec/glamour2.jpg') no-repeat center center;
+	background-size: cover;
+}
+
 #exec6 {
-	background: url('../img/works/exec/executive.jpg') no-repeat center center;
+	background: url('../img/works/exec/glamour3.jpg') no-repeat center center;
 	background-size: cover;
 }
 
